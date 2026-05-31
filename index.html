@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentoo Adventure — Una aventura épica en la Antártida</title>
+    <meta name="description" content="Acompaña a Kentoo el pingüino en su aventura por las islas del sur. Juego de aventura indie para iOS y Android.">
+    <meta property="og:title" content="Gentoo Adventure">
+    <meta property="og:description" content="Una aventura épica en la Antártida. Disponible para iOS y Android.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://gentooadventure.com/icon.png">
+
+    <link rel="icon" type="image/png" href="icon.png">
+
+    <style>
+        :root {
+            --bg: #0a1929;
+            --bg-light: #11253c;
+            --card: #16314e;
+            --text: #e8f0fb;
+            --muted: #8aa5c4;
+            --accent: #5ec18e;
+            --accent-glow: rgba(94, 193, 142, 0.4);
+            --gold: #f4c440;
+            --border: #1f3a5c;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* Estrellas decorativas en el fondo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(2px 2px at 10% 20%, white, transparent),
+                radial-gradient(1px 1px at 30% 50%, white, transparent),
+                radial-gradient(2px 2px at 50% 15%, white, transparent),
+                radial-gradient(1px 1px at 70% 30%, white, transparent),
+                radial-gradient(2px 2px at 85% 60%, white, transparent),
+                radial-gradient(1px 1px at 20% 80%, white, transparent),
+                radial-gradient(1px 1px at 90% 90%, white, transparent),
+                radial-gradient(2px 2px at 60% 75%, white, transparent);
+            background-size: 100% 100%;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 25, 41, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 24px;
+        }
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.1em;
+        }
+        nav .brand-icon { font-size: 24px; }
+        nav .links a {
+            color: var(--muted);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.93em;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        nav .links a:hover { color: var(--text); }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 24px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 100px 24px 80px;
+            background: linear-gradient(180deg,
+                rgba(10,25,41,0) 0%,
+                rgba(46,125,79,0.08) 50%,
+                rgba(10,25,41,0) 100%);
+        }
+        .hero-icon {
+            display: inline-block;
+            margin-bottom: 24px;
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #b4dffc 0%, #5ec18e 70%, #2e7d4f 100%);
+            box-shadow:
+                0 10px 40px var(--accent-glow),
+                inset 0 -10px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+        .hero .tagline {
+            font-size: 1.3em;
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+        .badges {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.9em;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .badge.coming {
+            background: linear-gradient(135deg, rgba(94,193,142,0.15), rgba(244,196,64,0.15));
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* FEATURES */
+        .features-title {
+            text-align: center;
+            font-size: 2.4em;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .features-sub {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 50px;
+            font-size: 1.05em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        .feature:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(94,193,142,0.15);
+        }
+        .feature .icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .feature h3 {
+            font-size: 1.15em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .feature p {
+            color: var(--muted);
+            font-size: 0.95em;
+        }
+
+        /* STORY */
+        .story {
+            background: linear-gradient(180deg,
+                rgba(10,25,41,0) 0%,
+                rgba(20,60,100,0.3) 50%,
+                rgba(10,25,41,0) 100%);
+            text-align: center;
+        }
+        .story p {
+            max-width: 720px;
+            margin: 0 auto 20px;
+            font-size: 1.1em;
+            color: var(--muted);
+        }
+        .story p:first-of-type {
+            color: var(--text);
+            font-size: 1.25em;
+            font-style: italic;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(94,193,142,0.1), rgba(244,196,64,0.05));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .cta h2 {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 32px;
+            font-size: 1.1em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.15s, box-shadow 0.2s;
+            margin: 6px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #2e7d4f);
+            color: white;
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { border-color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 24px 30px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+        }
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover { color: var(--accent); }
+        footer .copy {
+            margin-top: 20px;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 60px 20px 50px; }
+            .hero h1 { font-size: 2.6em; }
+            .hero-icon { width: 110px; height: 110px; font-size: 62px; }
+            section { padding: 60px 20px; }
+            nav .links a { margin-left: 12px; font-size: 0.85em; }
+            .features-title { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <div class="brand">
+                <span class="brand-icon">🐧</span>
+                <span>Gentoo Adventure</span>
+            </div>
+            <div class="links">
+                <a href="#features">Características</a>
+                <a href="#story">Historia</a>
+                <a href="privacy.html">Privacidad</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-icon">🐧</div>
+        <h1>Gentoo Adventure</h1>
+        <p class="tagline">
+            Acompaña a Kentoo en una épica aventura<br>
+            por las islas del sur del mundo
+        </p>
+        <div class="badges">
+            <span class="badge coming">📱 Próximamente en App Store</span>
+            <span class="badge coming">🤖 Próximamente en Google Play</span>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="container">
+            <h2 class="features-title">Una aventura completa</h2>
+            <p class="features-sub">Más de 6 áreas para explorar, combates épicos y un mundo lleno de vida</p>
+
+            <div class="grid">
+                <div class="feature">
+                    <div class="icon">🗺️</div>
+                    <h3>6 áreas únicas</h3>
+                    <p>Isla principal, playa, bosque, cuevas oscuras y la mística cueva de hielo te esperan.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">⚔️</div>
+                    <h3>Combate dinámico</h3>
+                    <p>Lanza huevos a tus enemigos, esquiva sus ataques y conviértete en el mejor pingüino guerrero.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">👑</div>
+                    <h3>Jefes y Mini-Jefes</h3>
+                    <p>Enfrenta al temido Gran Petrel y mini-jefes esparcidos por cada área del mapa.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🎩</div>
+                    <h3>Sombreros y tesoros</h3>
+                    <p>Descubre cofres con coronas, sombreros raros y collares para personalizar a Kentoo.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🐧</div>
+                    <h3>NPCs con personalidad</h3>
+                    <p>Habla con la abuela, el tendero foca, Luna la exploradora y muchos más.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🌅</div>
+                    <h3>Ciclo día/noche</h3>
+                    <p>El mundo cambia con el tiempo. De noche los enemigos son más rápidos. Duerme en un nido para descansar.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🌧️</div>
+                    <h3>Clima dinámico</h3>
+                    <p>Nieve en la cueva de hielo, lluvia en el bosque, brisa en la playa. Cada zona se siente única.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">💾</div>
+                    <h3>3 partidas paralelas</h3>
+                    <p>Sistema de slots para que toda la familia tenga su propia aventura.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🔁</div>
+                    <h3>New Game+</h3>
+                    <p>Al vencer al jefe, desbloqueás un modo con enemigos más fuertes y nuevos retos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="story">
+        <div class="container">
+            <h2 class="features-title">La historia</h2>
+            <p>
+                "Hay una isla al sur del mundo<br>
+                donde el viento aprende a cantar."
+            </p>
+            <p>
+                Kentoo es un pequeño pingüino gentoo que vive feliz en una pequeña isla del sur del mundo,
+                donde las gaviotas gritan y los tussacs se mueven con el viento.
+            </p>
+            <p>
+                Pero una mañana, el cielo se nubló y algo oscuro despertó en el mar.
+                El Gran Petrel, antiguo guardián de las tormentas, ha vuelto y necesita ser detenido.
+            </p>
+            <p>
+                Con un huevo dorado en sus alas y el coraje de su abuela en el corazón,
+                Kentoo debe cruzar bosques, cuevas y mares para devolver la luz a su hogar.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Querés saber cuándo lanzamos?</h2>
+            <p>Escribinos y te avisamos apenas esté disponible</p>
+            <a href="mailto:gentooadventure@gmail.com?subject=Quiero%20saber%20cuando%20lanza%20Gentoo%20Adventure"
+               class="btn btn-primary">📧 Notificarme del lanzamiento</a>
+            <a href="privacy.html" class="btn btn-secondary">📋 Política de Privacidad</a>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <a href="mailto:gentooadventure@gmail.com">Contacto</a>
+            <a href="privacy.html">Privacidad</a>
+            <a href="#features">Características</a>
+            <a href="#story">Historia</a>
+        </div>
+        <div class="copy">
+            © 2026 Gentoo Adventure · Creado con ❤️ por Carlos Vásquez
+        </div>
+    </footer>
+</body>
+</html>

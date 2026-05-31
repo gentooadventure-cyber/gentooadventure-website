@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Gentoo Adventure</title>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #1a2332;
+            --muted: #5b6b85;
+            --accent: #2e7d4f;
+            --border: #e2e8f0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1721;
+                --card: #1a2332;
+                --text: #e8eef7;
+                --muted: #94a3b8;
+                --accent: #5ec18e;
+                --border: #2a3548;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 56px;
+            margin-bottom: 12px;
+        }
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 2em;
+            font-weight: 800;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.95em;
+        }
+        .lang-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .lang-toggle button {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 0 4px;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+        .lang-toggle button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+        h2:not(:first-child) {
+            margin-top: 32px;
+        }
+        ul { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .summary {
+            background: linear-gradient(135deg, rgba(94,193,142,0.1), rgba(46,125,79,0.1));
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .summary strong { color: var(--accent); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+        .lang-section { display: none; }
+        .lang-section.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🐧</div>
+            <h1>Gentoo Adventure</h1>
+            <div class="subtitle">Política de Privacidad · Privacy Policy</div>
+        </header>
+
+        <div class="lang-toggle">
+            <button id="btn-es" class="active" onclick="setLang('es')">🇪🇸 Español</button>
+            <button id="btn-en" onclick="setLang('en')">🇬🇧 English</button>
+        </div>
+
+        <!-- ESPAÑOL -->
+        <div id="lang-es" class="lang-section active">
+            <div class="card">
+                <div class="summary">
+                    <strong>Resumen:</strong> Gentoo Adventure no recopila, almacena ni comparte ningún dato personal tuyo.
+                    Todo el progreso del juego se guarda únicamente en tu dispositivo.
+                </div>
+
+                <h2>1. Información que recopilamos</h2>
+                <p><strong>Ninguna.</strong> Gentoo Adventure es un juego completamente offline para un solo jugador.
+                No requiere cuenta, no pide permisos especiales y no se conecta a servidores externos.</p>
+
+                <h2>2. Datos almacenados localmente</h2>
+                <p>El juego guarda tu progreso (monedas, vidas, cofres abiertos, sombreros, partidas guardadas)
+                únicamente en el almacenamiento local de tu dispositivo iPhone/iPad mediante UserDefaults.
+                Esta información:</p>
+                <ul>
+                    <li>Nunca sale de tu dispositivo</li>
+                    <li>No se sincroniza a la nube (a menos que actives iCloud manualmente)</li>
+                    <li>Se elimina automáticamente al desinstalar la app</li>
+                </ul>
+
+                <h2>3. Tracking y publicidad</h2>
+                <p>No usamos identificadores publicitarios, no rastreamos tu actividad y no mostramos anuncios.
+                No utilizamos servicios de analítica de terceros.</p>
+
+                <h2>4. Permisos del sistema</h2>
+                <p>Gentoo Adventure no solicita permisos sensibles. No accede a:</p>
+                <ul>
+                    <li>📷 Cámara</li>
+                    <li>📍 Ubicación</li>
+                    <li>📇 Contactos</li>
+                    <li>🎤 Micrófono</li>
+                    <li>📸 Fotos</li>
+                    <li>🔔 Notificaciones</li>
+                </ul>
+
+                <h2>5. Niños y menores</h2>
+                <p>Gentoo Adventure es apto para todas las edades. No recopilamos información de menores
+                porque no recopilamos información de nadie.</p>
+
+                <h2>6. Cambios a esta política</h2>
+                <p>Si en el futuro agregamos funciones que requieran cambios en la privacidad,
+                actualizaremos esta página y comunicaremos los cambios mediante una nota dentro del juego.</p>
+
+                <h2>7. Contacto</h2>
+                <p>Para cualquier consulta sobre privacidad, escribí a:
+                <a href="mailto:gentooadventure@gmail.com">gentooadventure@gmail.com</a></p>
+            </div>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-section">
+            <div class="card">
+                <div class="summary">
+                    <strong>Summary:</strong> Gentoo Adventure does not collect, store, or share any personal data.
+                    All game progress is saved only on your device.
+                </div>
+
+                <h2>1. Information We Collect</h2>
+                <p><strong>None.</strong> Gentoo Adventure is a fully offline single-player game.
+                No account is required, no special permissions are requested, and the app does not connect to external servers.</p>
+
+                <h2>2. Data Stored Locally</h2>
+                <p>The game saves your progress (coins, lives, opened chests, hats, save slots)
+                only in your iPhone/iPad's local storage via UserDefaults. This information:</p>
+                <ul>
+                    <li>Never leaves your device</li>
+                    <li>Is not synced to the cloud (unless you manually enable iCloud)</li>
+                    <li>Is removed automatically when you uninstall the app</li>
+                </ul>
+
+                <h2>3. Tracking and Advertising</h2>
+                <p>We do not use advertising identifiers, do not track your activity, and do not show ads.
+                We do not use third-party analytics services.</p>
+
+                <h2>4. System Permissions</h2>
+                <p>Gentoo Adventure does not request sensitive permissions. The app does not access:</p>
+                <ul>
+                    <li>📷 Camera</li>
+                    <li>📍 Location</li>
+                    <li>📇 Contacts</li>
+                    <li>🎤 Microphone</li>
+                    <li>📸 Photos</li>
+                    <li>🔔 Notifications</li>
+                </ul>
+
+                <h2>5. Children and Minors</h2>
+                <p>Gentoo Adventure is suitable for all ages. We do not collect information from minors
+                because we do not collect information from anyone.</p>
+
+                <h2>6. Changes to This Policy</h2>
+                <p>If we add features in the future that require privacy changes,
+                we will update this page and communicate the changes via an in-game note.</p>
+
+                <h2>7. Contact</h2>
+                <p>For any privacy-related inquiries, please write to:
+                <a href="mailto:gentooadventure@gmail.com">gentooadventure@gmail.com</a></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Última actualización · Last updated: <span id="date"></span></p>
+            <p>© 2026 Carlos Vasquez · Gentoo Adventure</p>
+        </footer>
+    </div>
+
+    <script>
+        // Fecha automática
+        const now = new Date();
+        document.getElementById('date').textContent =
+            now.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Idioma según navegador
+        if (navigator.language && navigator.language.startsWith('en')) {
+            setLang('en');
+        }
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-toggle button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
