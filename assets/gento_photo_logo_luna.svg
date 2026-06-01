@@ -26,54 +26,34 @@
         <g>
             <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
             <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.15"/>
-            <g transform="rotate(45)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/>
-            </g>
-            <g transform="rotate(90)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/>
-            </g>
-            <g transform="rotate(135)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/>
-            </g>
-            <g transform="rotate(180)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.35"/>
-            </g>
-            <g transform="rotate(225)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/>
-            </g>
-            <g transform="rotate(270)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/>
-            </g>
-            <g transform="rotate(315)">
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/>
-                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/>
-            </g>
+            <g transform="rotate(45)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/></g>
+            <g transform="rotate(90)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/></g>
+            <g transform="rotate(135)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/></g>
+            <g transform="rotate(180)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.35"/></g>
+            <g transform="rotate(225)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/></g>
+            <g transform="rotate(270)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/></g>
+            <g transform="rotate(315)"><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldL)"/><path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/></g>
         </g>
 
-        <circle cx="0" cy="0" r="42" fill="#0a1929"/>
-        <circle cx="0" cy="0" r="38" fill="#0d1f30"/>
+        <circle cx="0" cy="0" r="44" fill="#0a1929"/>
+        <circle cx="0" cy="0" r="40" fill="#0d1f30"/>
 
-        <image href="npc_luna.png" x="-32" y="-32" width="64" height="64" style="image-rendering:pixelated"/>
+        <!-- Luna pixel art embebida (base64) -->
+        <image xlink:href="data:image/png;base64,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" x="-36" y="-36" width="72" height="72" preserveAspectRatio="xMidYMid meet" image-rendering="pixelated" xmlns:xlink="http://www.w3.org/1999/xlink"/>
 
-        <circle cx="0" cy="0" r="85" fill="url(#glassL)"/>
+        <circle cx="0" cy="0" r="85" fill="url(#glassL)" pointer-events="none"/>
 
         <circle cx="65" cy="-65" r="4" fill="#e74c3c"/>
         <circle cx="65" cy="-65" r="2" fill="#ff6b5b"/>
     </g>
 
     <g transform="translate(310, 140)">
-        <text x="0" y="-10" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-              font-size="64" font-weight="200" fill="#0d0d0d"
+        <text x="0" y="-10" font-family="Helvetica Neue, Arial, sans-serif"
+              font-size="64" font-weight="200" fill="#e8eef7"
               letter-spacing="8">GENTO</text>
         <line x1="0" y1="14" x2="280" y2="14" stroke="url(#goldL)" stroke-width="2"/>
-        <text x="0" y="42" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-              font-size="14" font-weight="500" fill="#7a7a7a"
+        <text x="0" y="42" font-family="Helvetica Neue, Arial, sans-serif"
+              font-size="14" font-weight="500" fill="#8aa5c4"
               letter-spacing="12">PHOTO EDITOR</text>
     </g>
 </svg>
