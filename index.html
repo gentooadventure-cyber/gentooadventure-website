@@ -232,16 +232,15 @@
         @keyframes framesFlip    { 0%, 49% { opacity: 0; } 50%, 100% { opacity: 1; } }
         @keyframes framesFlipInv { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
-        /* ─── VEGETACIÓN DE FONDO ─── */
-        .scene-char.tussac { width: 36px; height: 36px; opacity: 0.85; animation: sway 3s ease-in-out infinite; }
-        .scene-char.tussac.t1 { bottom: 50px; left: 30px; }
-        .scene-char.tussac.t2 { bottom: 80px; right: 130px; animation-delay: 0.7s; }
-        .scene-char.tussac.t3 { bottom: 35px; left: 230px; animation-delay: 1.4s; transform: scale(0.8); }
+        /* ─── VEGETACIÓN DE FONDO (centrada) ─── */
+        .scene-char.tussac { width: 32px; height: 32px; opacity: 0.8; animation: sway 3s ease-in-out infinite; }
+        .scene-char.tussac.t1 { bottom: 90px; left: 28%; }
+        .scene-char.tussac.t2 { bottom: 95px; right: 28%; animation-delay: 0.7s; }
+        .scene-char.tussac.t3 { bottom: 50px; left: 50%; margin-left: -16px; animation-delay: 1.4s; transform: scale(0.8); }
         @keyframes sway {
             0%, 100% { transform: rotate(-3deg); }
             50% { transform: rotate(3deg); }
         }
-        .scene-char.tree { bottom: 60px; right: 20px; width: 70px; opacity: 0.9; }
 
         /* ─── AVES VOLANDO ─── */
         .scene-char.gull {
@@ -269,12 +268,12 @@
         }
 
         .scene-char.skua {
-            top: 15px; right: 80px; width: 40px;
+            top: 25px; left: 50%; margin-left: 50px; width: 38px;
             animation: skuaFloat 5s ease-in-out infinite;
         }
         @keyframes skuaFloat {
             0%, 100% { transform: translate(0, 0) scaleX(-1); }
-            50% { transform: translate(-25px, 8px) scaleX(-1); }
+            50% { transform: translate(-20px, 8px) scaleX(-1); }
         }
 
         /* ─── PINGÜINO PROTAGONISTA ─── */
@@ -289,33 +288,33 @@
             50% { transform: translateY(-10px) rotate(2deg); }
         }
 
-        /* ─── NPCs AMIGOS ─── */
-        .scene-char.npc { width: 50px; height: 50px; animation: npcBob 1.6s ease-in-out infinite; }
-        .scene-char.abuela { bottom: 40px; left: 15%; animation-delay: 0s; }
-        .scene-char.luna   { bottom: 35px; right: 18%; animation-delay: 0.4s; width: 48px; }
-        .scene-char.bruno  { bottom: 45px; left: 30%; animation-delay: 0.8s; width: 56px; }
-        .scene-char.pip    { bottom: 38px; right: 32%; animation-delay: 1.2s; width: 46px; }
+        /* ─── NPCs AMIGOS (agrupados al rededor del pingüino) ─── */
+        .scene-char.npc { width: 46px; height: 46px; animation: npcBob 1.6s ease-in-out infinite; }
+        .scene-char.abuela { bottom: 40px; left: 30%; animation-delay: 0s; }
+        .scene-char.luna   { bottom: 38px; right: 30%; animation-delay: 0.4s; }
+        .scene-char.bruno  { bottom: 50px; left: 38%; animation-delay: 0.8s; width: 50px; }
+        .scene-char.pip    { bottom: 45px; right: 38%; animation-delay: 1.2s; width: 42px; }
         @keyframes npcBob {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-4px); }
         }
 
-        /* ─── OVEJAS ─── */
+        /* ─── OVEJAS (más al centro) ─── */
         .scene-char.sheep {
-            bottom: 30px; right: 25px; width: 50px; height: 50px;
+            bottom: 28px; right: 18%; width: 44px; height: 44px;
             animation: sheepWalk 3s ease-in-out infinite;
         }
         .scene-char.sheep .frame-b { animation-duration: 0.6s; }
         .scene-char.sheep .frame-a { animation-duration: 0.6s; }
         @keyframes sheepWalk {
             0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-15px) translateY(-2px); }
+            25% { transform: translateX(-12px) translateY(-2px); }
             50% { transform: translateX(0) translateY(0); }
-            75% { transform: translateX(-15px) translateY(-2px); }
+            75% { transform: translateX(-12px) translateY(-2px); }
         }
-        .scene-char.sheep-static { width: 38px; animation: sheepIdle 2.4s ease-in-out infinite; }
-        .scene-char.sheep-static.s2 { bottom: 50px; left: 42%; }
-        .scene-char.sheep-static.s3 { bottom: 45px; right: 38%; animation-delay: 1s; }
+        .scene-char.sheep-static { width: 34px; animation: sheepIdle 2.4s ease-in-out infinite; }
+        .scene-char.sheep-static.s2 { bottom: 60px; left: 47%; }
+        .scene-char.sheep-static.s3 { bottom: 35px; left: 44%; animation-delay: 1s; }
         @keyframes sheepIdle {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-3px); }
@@ -323,14 +322,14 @@
 
         /* ─── ZORRO ─── */
         .scene-char.fox {
-            bottom: 30px; left: 8%; width: 60px; height: 50px;
+            bottom: 28px; left: 18%; width: 50px; height: 42px;
             animation: foxProwl 5s ease-in-out infinite;
         }
         .scene-char.fox .frame-b { animation-duration: 1.2s; }
         .scene-char.fox .frame-a { animation-duration: 1.2s; }
         @keyframes foxProwl {
             0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(40px); }
+            50% { transform: translateX(30px); }
         }
 
         /* ─── CORONA ─── */
@@ -354,17 +353,17 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* ─── MAR (orca y pulpo) ─── */
+        /* ─── MAR (orca y pulpo, centrados) ─── */
         .scene-char.orca {
-            bottom: -10px; left: 38%; width: 80px;
+            bottom: -5px; left: 50%; margin-left: -40px; width: 70px;
             animation: orcaJump 4s ease-in-out infinite;
         }
         @keyframes orcaJump {
             0%, 70%, 100% { transform: translateY(40px); opacity: 0.4; }
-            85% { transform: translateY(-10px) rotate(-15deg); opacity: 1; }
+            85% { transform: translateY(-5px) rotate(-15deg); opacity: 1; }
         }
         .scene-char.pulpo {
-            bottom: 5px; right: 5px; width: 46px;
+            bottom: 12px; right: 10%; width: 42px;
             animation: pulpoFloat 3.5s ease-in-out infinite;
             opacity: 0.92;
         }
@@ -577,11 +576,10 @@
                     </div>
 
                     <div class="sprite-scene">
-                        <!-- 🌳 Vegetación de fondo -->
+                        <!-- 🌿 Vegetación de fondo (centrada) -->
                         <img src="assets/tussac_1.png" class="scene-char tussac t1 pixel">
                         <img src="assets/tussac_1.png" class="scene-char tussac t2 pixel">
                         <img src="assets/tussac_1.png" class="scene-char tussac t3 pixel">
-                        <img src="assets/tree_pine_2.png" class="scene-char tree pixel">
 
                         <!-- 🦅 Aves volando arriba -->
                         <div class="scene-char gull anim-2f">
