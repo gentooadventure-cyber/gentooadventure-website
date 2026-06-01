@@ -217,6 +217,32 @@
             border-radius: 50%;
             background: radial-gradient(circle, #ffe88a 0%, #f4c440 60%, transparent 100%);
         }
+        /* ═══ Screenshot del juego ═══ */
+        .game-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            background: #0a1929;
+            position: relative;
+        }
+        .game-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .game-preview::after {
+            content: 'GAMEPLAY';
+            position: absolute;
+            top: 14px; right: 14px;
+            background: rgba(94, 193, 142, 0.9);
+            color: white;
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
         /* ═══ ESCENA CON TODOS LOS PERSONAJES ═══ */
         .sprite-scene { min-height: 420px; }
         .scene-char { position: absolute; image-rendering: pixelated; display: block; }
@@ -575,59 +601,8 @@
                         </div>
                     </div>
 
-                    <div class="sprite-scene">
-                        <!-- 🌿 Vegetación de fondo (centrada) -->
-                        <img src="assets/tussac_1.png" class="scene-char tussac t1 pixel">
-                        <img src="assets/tussac_1.png" class="scene-char tussac t2 pixel">
-                        <img src="assets/tussac_1.png" class="scene-char tussac t3 pixel">
-
-                        <!-- 🦅 Aves volando arriba -->
-                        <div class="scene-char gull anim-2f">
-                            <img src="assets/gull_0.png" class="frame frame-a pixel">
-                            <img src="assets/gull_1.png" class="frame frame-b pixel">
-                        </div>
-                        <div class="scene-char caracara anim-2f">
-                            <img src="assets/caracara_0.png" class="frame frame-a pixel">
-                            <img src="assets/caracara_1.png" class="frame frame-b pixel">
-                        </div>
-                        <img src="assets/skua_0.png" class="scene-char skua pixel">
-
-                        <!-- 🐑 Ovejitas pastando -->
-                        <div class="scene-char sheep s1 anim-2f">
-                            <img src="assets/sheep_0.png" class="frame frame-a pixel">
-                            <img src="assets/sheep_2.png" class="frame frame-b pixel">
-                        </div>
-                        <img src="assets/sheep_1.png" class="scene-char sheep-static s2 pixel">
-                        <img src="assets/sheep_3.png" class="scene-char sheep-static s3 pixel">
-
-                        <!-- 🦊 Zorro acechando -->
-                        <div class="scene-char fox anim-2f">
-                            <img src="assets/fox_left.png" class="frame frame-a pixel">
-                            <img src="assets/fox_right.png" class="frame frame-b pixel">
-                        </div>
-
-                        <!-- 🐧 NPCs amigos a los lados -->
-                        <img src="assets/npc_abuela.png" class="scene-char npc abuela pixel">
-                        <img src="assets/npc_luna.png" class="scene-char npc luna pixel">
-                        <img src="assets/npc_bruno.png" class="scene-char npc bruno pixel">
-                        <img src="assets/npc_pip.png" class="scene-char npc pip pixel">
-
-                        <!-- 👑 Corona dorada con brillos -->
-                        <div class="scene-char crown sparkle-host">
-                            <img src="assets/crown.png" class="pixel" style="width:100%;">
-                            <span class="sparkle s1">✨</span>
-                            <span class="sparkle s2">✨</span>
-                        </div>
-
-                        <!-- 🐧 KENTOO protagonista al centro -->
-                        <div class="scene-char penguin anim-2f">
-                            <img src="assets/penguin_down_0.png" class="frame frame-a pixel">
-                            <img src="assets/penguin_left_0.png" class="frame frame-b pixel">
-                        </div>
-
-                        <!-- 🐙 Pulpo y 🦭 mar -->
-                        <img src="assets/npc_pulpo.png" class="scene-char pulpo pixel">
-                        <img src="assets/orca_0.png" class="scene-char orca pixel">
+                    <div class="game-preview">
+                        <img src="assets/game_preview.png" alt="Gameplay de Gentoo Adventure" class="pixel">
                     </div>
                 </div>
 
