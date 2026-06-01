@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>GENTO Photo — Logo Profesional Final</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f7f9fc; padding: 40px 20px; margin: 0; color: #0f1a2b;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 { text-align: center; font-size: 1.8em; margin-bottom: 10px; }
+        .sub { text-align: center; color: #5b6b85; margin-bottom: 40px; font-size: 0.95em; }
+        h2 { text-align: center; font-size: 1.2em; margin: 40px 0 20px; color: #2e7d4f; }
+        .box {
+            border-radius: 16px; padding: 50px;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .box.light { background: #ffffff; }
+        .box.dark { background: #0a0a0a; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .sizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            align-items: center;
+            justify-items: center;
+        }
+        .sizes-grid > div { text-align: center; }
+        .sizes-grid img { display: block; margin: 0 auto 8px; }
+        .size-name { font-size: 0.78em; color: #8aa5c4; }
+        .changes {
+            background: #fff8e6; border-left: 3px solid #b8870a;
+            padding: 18px 22px; border-radius: 8px;
+            margin-top: 30px; font-size: 0.93em;
+        }
+        .changes h4 { margin-bottom: 8px; color: #b8870a; }
+        .changes ul { padding-left: 20px; }
+        .changes li { margin-bottom: 4px; }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 GENTO Photo Editor — Logo Profesional</h1>
+        <p class="sub">Versión sin cartoons: lente fotográfica geométrica + wordmark editorial</p>
+
+        <h2>Logo horizontal (web, marketing)</h2>
+        <div class="box light">
+            <img src="../assets/gento_photo_logo_pro.svg" style="max-width:600px;">
+        </div>
+        <div class="box dark">
+            <img src="../assets/gento_photo_logo_pro.svg" style="max-width:600px;">
+        </div>
+
+        <h2>App Icon (cuadrado para App Store)</h2>
+        <div class="grid">
+            <div class="box dark" style="padding:30px;">
+                <img src="../assets/gento_photo_appicon_pro.svg" style="max-width:280px; border-radius:64px;">
+            </div>
+            <div class="box light" style="padding:30px;">
+                <img src="../assets/gento_photo_appicon_pro.svg" style="max-width:280px; border-radius:64px;">
+            </div>
+        </div>
+
+        <h2>Tamaños del app icon (preview iOS)</h2>
+        <div class="box light">
+            <div class="sizes-grid">
+                <div>
+                    <img src="../assets/gento_photo_appicon_pro.svg" width="180" style="border-radius:40px;">
+                    <div class="size-name">180px (Retina)</div>
+                </div>
+                <div>
+                    <img src="../assets/gento_photo_appicon_pro.svg" width="120" style="border-radius:27px;">
+                    <div class="size-name">120px</div>
+                </div>
+                <div>
+                    <img src="../assets/gento_photo_appicon_pro.svg" width="80" style="border-radius:18px;">
+                    <div class="size-name">80px</div>
+                </div>
+                <div>
+                    <img src="../assets/gento_photo_appicon_pro.svg" width="60" style="border-radius:13px;">
+                    <div class="size-name">60px</div>
+                </div>
+                <div>
+                    <img src="../assets/gento_photo_appicon_pro.svg" width="40" style="border-radius:9px;">
+                    <div class="size-name">40px</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="changes">
+            <h4>Por qué este es profesional</h4>
+            <ul>
+                <li>🎯 <strong>Sin pingüino cartoon</strong> — solo el lente, símbolo universal de fotografía</li>
+                <li>🔺 <strong>Aperture de 8 hojas</strong> — lentes pro reales usan 8 o más, no 6</li>
+                <li>💎 <strong>Gradientes sofisticados</strong> — dorado de 3 stops, no plano</li>
+                <li>🔍 <strong>Profundidad real</strong> — anillos metálicos concéntricos como una lente DSLR</li>
+                <li>🔴 <strong>LED rojo</strong> — indicador profesional de cámara (record/sensor)</li>
+                <li>📝 <strong>Typography editorial</strong> — Helvetica thin (200) con letter-spacing amplio</li>
+                <li>🔱 <strong>Línea dorada separadora</strong> — divide GENTO del tagline (estilo magazine)</li>
+                <li>🌑 <strong>Funciona en cualquier tamaño</strong> — sigue reconocible a 40px</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

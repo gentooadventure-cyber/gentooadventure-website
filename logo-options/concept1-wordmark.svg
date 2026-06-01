@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" width="600" height="180">
+    <!-- CONCEPT 1: Wordmark + iceberg minimalista -->
+    <defs>
+        <linearGradient id="iceGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#a8d8f0"/>
+            <stop offset="100%" stop-color="#4a7ba3"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Iceberg estilizado a la izquierda -->
+    <g transform="translate(60, 50)">
+        <!-- Pico superior -->
+        <path d="M 20 0 L 50 70 L -10 70 Z" fill="url(#iceGrad1)"/>
+        <!-- Pico secundario -->
+        <path d="M 50 25 L 70 70 L 30 70 Z" fill="url(#iceGrad1)" opacity="0.7"/>
+        <!-- Reflejo en agua (línea) -->
+        <line x1="-20" y1="78" x2="80" y2="78" stroke="#4a7ba3" stroke-width="1.5" opacity="0.5"/>
+        <!-- Reflejo del iceberg -->
+        <path d="M 20 90 L 50 78 L -10 78 Z" fill="url(#iceGrad1)" opacity="0.25"/>
+    </g>
+
+    <!-- Texto principal -->
+    <text x="170" y="90" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="48" font-weight="200" fill="#0f1a2b"
+          letter-spacing="4">
+        GENTOO
+    </text>
+    <text x="170" y="130" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="48" font-weight="700" fill="#0f1a2b"
+          letter-spacing="4">
+        ADVENTURE
+    </text>
+</svg>

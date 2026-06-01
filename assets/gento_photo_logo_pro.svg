@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="700" height="280">
+    <!-- GENTO Photo Editor — Logo PROFESIONAL (minimalista) -->
+    <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f4d03f"/>
+            <stop offset="100%" stop-color="#b8870a"/>
+        </linearGradient>
+        <radialGradient id="lensInner" cx="35%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#3a3a3a"/>
+            <stop offset="60%" stop-color="#0d0d0d"/>
+            <stop offset="100%" stop-color="#000000"/>
+        </radialGradient>
+        <radialGradient id="glassReflect" cx="30%" cy="30%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+            <stop offset="40%" stop-color="#ffffff" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+
+    <!-- ═══ LENTE PROFESIONAL (lado izquierdo) ═══ -->
+    <g transform="translate(140, 140)">
+        <!-- Sombra debajo de la lente -->
+        <ellipse cx="0" cy="115" rx="100" ry="6" fill="#000" opacity="0.2"/>
+
+        <!-- Anillo exterior negro -->
+        <circle cx="0" cy="0" r="115" fill="#0a0a0a"/>
+
+        <!-- Anillo dorado fino (acento de lujo) -->
+        <circle cx="0" cy="0" r="108" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+
+        <!-- Anillo metálico -->
+        <circle cx="0" cy="0" r="100" fill="#1a1a1a"/>
+        <circle cx="0" cy="0" r="92" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+
+        <!-- Vidrio interior de la lente (efecto profundidad) -->
+        <circle cx="0" cy="0" r="85" fill="url(#lensInner)"/>
+
+        <!-- ─── APERTURE de 8 hojas geométricas (más pro que 6) ─── -->
+        <g>
+            <!-- Las 8 hojas crean el patrón de iris precisamente -->
+            <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+            <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.15"/>
+
+            <g transform="rotate(45)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/>
+            </g>
+            <g transform="rotate(90)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/>
+            </g>
+            <g transform="rotate(135)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/>
+            </g>
+            <g transform="rotate(180)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.35"/>
+            </g>
+            <g transform="rotate(225)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.3"/>
+            </g>
+            <g transform="rotate(270)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.25"/>
+            </g>
+            <g transform="rotate(315)">
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="url(#goldGrad)"/>
+                <path d="M 0 -80 L 56 -57 L 0 -28 Z" fill="#000" opacity="0.2"/>
+            </g>
+        </g>
+
+        <!-- Centro del lente (vidrio negro profundo) -->
+        <circle cx="0" cy="0" r="28" fill="#0a1929"/>
+        <circle cx="0" cy="0" r="22" fill="#0d1f30"/>
+
+        <!-- Reflejo vidrio (highlight superior izq) -->
+        <ellipse cx="-15" cy="-20" rx="14" ry="8" fill="#ffffff" opacity="0.25" transform="rotate(-30 -15 -20)"/>
+
+        <!-- Reflejo grande del cristal de la lente -->
+        <circle cx="0" cy="0" r="85" fill="url(#glassReflect)"/>
+
+        <!-- Pequeño punto rojo (sensor / record indicator pro) -->
+        <circle cx="65" cy="-65" r="4" fill="#e74c3c"/>
+        <circle cx="65" cy="-65" r="2" fill="#ff6b5b"/>
+    </g>
+
+    <!-- ═══ WORDMARK (lado derecho) ═══ -->
+    <g transform="translate(310, 140)">
+        <!-- GENTO en tipografía limpia y elegante -->
+        <text x="0" y="-10" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+              font-size="64" font-weight="200" fill="#0d0d0d"
+              letter-spacing="8">GENTO</text>
+
+        <!-- Línea horizontal dorada (acento minimalista) -->
+        <line x1="0" y1="14" x2="280" y2="14" stroke="url(#goldGrad)" stroke-width="2"/>
+
+        <!-- "PHOTO EDITOR" pequeño debajo, espaciado -->
+        <text x="0" y="42" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+              font-size="14" font-weight="500" fill="#7a7a7a"
+              letter-spacing="12">PHOTO EDITOR</text>
+    </g>
+</svg>

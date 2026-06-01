@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+    <!-- CONCEPT 2: Monograma G/A en círculo -->
+    <defs>
+        <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2e7d4f"/>
+            <stop offset="100%" stop-color="#1a4a30"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Monograma circular -->
+    <g transform="translate(100, 100)">
+        <!-- Círculo de fondo -->
+        <circle cx="0" cy="0" r="60" fill="url(#circleGrad)"/>
+        <!-- Letra G -->
+        <text x="-22" y="14" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+              font-size="60" font-weight="900" fill="#ffffff"
+              letter-spacing="-2" text-anchor="middle">G</text>
+        <!-- Letra A entrelazada -->
+        <text x="14" y="22" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+              font-size="60" font-weight="200" fill="#f4c440"
+              letter-spacing="-2" text-anchor="middle">A</text>
+        <!-- Borde decorativo -->
+        <circle cx="0" cy="0" r="65" fill="none" stroke="#f4c440" stroke-width="1.5" opacity="0.5"/>
+    </g>
+
+    <!-- Texto -->
+    <text x="190" y="92" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="36" font-weight="700" fill="#0f1a2b"
+          letter-spacing="2">
+        GENTOO ADVENTURE
+    </text>
+    <text x="190" y="120" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="13" font-weight="500" fill="#5b6b85"
+          letter-spacing="7">
+        INDIE GAME STUDIO
+    </text>
+</svg>

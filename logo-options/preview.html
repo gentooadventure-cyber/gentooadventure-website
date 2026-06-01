@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Concepts — Gentoo Adventure</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f7f9fc;
+            padding: 40px 20px;
+            margin: 0;
+            color: #0f1a2b;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; font-size: 2em; margin-bottom: 30px; }
+        .concept {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .concept h3 {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            color: #2e7d4f;
+        }
+        .concept .desc {
+            color: #5b6b85;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        .concept .logo-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        .concept .logo-box.dark {
+            background: #0a1929;
+            margin-top: 12px;
+        }
+        .concept .logo-box.dark img {
+            filter: invert(1) hue-rotate(180deg);
+        }
+        .concept img { max-width: 100%; height: auto; }
+        .dual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .label {
+            font-size: 0.8em; color: #8aa5c4;
+            text-align: center; margin-top: 8px;
+        }
+        @media (max-width: 700px) {
+            .dual { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Logo profesional — 3 conceptos</h1>
+
+        <div class="concept">
+            <h3>Opción 1 · Wordmark con iceberg</h3>
+            <p class="desc">Tipografía Helvetica fina + bold. Iceberg geométrico azul. Limpio, editorial, sin cartoon.</p>
+            <div class="dual">
+                <div>
+                    <div class="logo-box"><img src="concept1-wordmark.svg" alt=""></div>
+                    <p class="label">Fondo claro</p>
+                </div>
+                <div>
+                    <div class="logo-box dark"><img src="concept1-wordmark.svg" alt=""></div>
+                    <p class="label">Fondo oscuro</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h3>Opción 2 · Monograma G·A</h3>
+            <p class="desc">Letras G y A entrelazadas en círculo verde. Estilo brand corporativo / startup.</p>
+            <div class="dual">
+                <div>
+                    <div class="logo-box"><img src="concept2-monogram.svg" alt=""></div>
+                    <p class="label">Fondo claro</p>
+                </div>
+                <div>
+                    <div class="logo-box dark"><img src="concept2-monogram.svg" alt=""></div>
+                    <p class="label">Fondo oscuro</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h3>Opción 3 · Cordillera minimalista</h3>
+            <p class="desc">Tres picos abstractos + sol/luna dorado. Tipografía mixta (negrita + itálica). Estilo outdoors moderno.</p>
+            <div class="dual">
+                <div>
+                    <div class="logo-box"><img src="concept3-mountain.svg" alt=""></div>
+                    <p class="label">Fondo claro</p>
+                </div>
+                <div>
+                    <div class="logo-box dark"><img src="concept3-mountain.svg" alt=""></div>
+                    <p class="label">Fondo oscuro</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#5b6b85; margin-top:30px; font-size:0.95em;">
+            Cuando elijas tu favorito (1, 2 o 3), me lo decís y lo aplico al sitio.<br>
+            También puedo combinar elementos de varios.
+        </p>
+    </div>
+</body>
+</html>

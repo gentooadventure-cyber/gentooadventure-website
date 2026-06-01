@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentoo Adventure — Una aventura épica en la Antártida</title>
-    <meta name="description" content="Acompaña a Kentoo el pingüino en su aventura por las islas del sur. Juego de aventura indie para iOS y Android.">
-    <meta property="og:title" content="Gentoo Adventure">
-    <meta property="og:description" content="Una aventura épica en la Antártida. Disponible para iOS y Android.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://gentooadventure.com/icon.png">
-
+    <title>Gentoo Adventure — Indie Games & Apps Studio</title>
+    <meta name="description" content="Estudio independiente de juegos y aplicaciones móviles. Creamos experiencias con corazón.">
+    <meta property="og:title" content="Gentoo Adventure Studio">
+    <meta property="og:description" content="Indie Games & Apps Studio">
+    <meta property="og:image" content="icon.png">
     <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
 
     <style>
         :root {
@@ -33,12 +32,10 @@
             line-height: 1.65;
             overflow-x: hidden;
         }
-
-        /* Estrellas decorativas en el fondo */
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            inset: 0;
             background-image:
                 radial-gradient(2px 2px at 10% 20%, white, transparent),
                 radial-gradient(1px 1px at 30% 50%, white, transparent),
@@ -48,227 +45,273 @@
                 radial-gradient(1px 1px at 20% 80%, white, transparent),
                 radial-gradient(1px 1px at 90% 90%, white, transparent),
                 radial-gradient(2px 2px at 60% 75%, white, transparent);
-            background-size: 100% 100%;
-            opacity: 0.4;
+            opacity: 0.35;
             pointer-events: none;
             z-index: 0;
         }
+        img { max-width: 100%; height: auto; }
+        .pixel { image-rendering: pixelated; }
 
+        /* NAV */
         nav {
-            position: sticky;
-            top: 0;
+            position: sticky; top: 0;
             background: rgba(10, 25, 41, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
-            padding: 16px 24px;
+            padding: 12px 24px;
         }
         nav .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        nav .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.1em;
-        }
-        nav .brand-icon { font-size: 24px; }
+        nav .brand img { height: 36px; }
         nav .links a {
             color: var(--muted);
             text-decoration: none;
-            margin-left: 24px;
-            font-size: 0.93em;
+            margin-left: 18px;
+            font-size: 0.92em;
             font-weight: 600;
             transition: color 0.2s;
         }
         nav .links a:hover { color: var(--text); }
+        nav .music-btn {
+            margin-left: 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        nav .music-btn.playing { color: var(--gold); border-color: var(--gold); }
 
-        section {
-            position: relative;
-            z-index: 1;
-            padding: 80px 24px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        section { position: relative; z-index: 1; padding: 80px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; }
 
         /* HERO */
-        .hero {
-            text-align: center;
-            padding: 100px 24px 80px;
-            background: linear-gradient(180deg,
-                rgba(10,25,41,0) 0%,
-                rgba(46,125,79,0.08) 50%,
-                rgba(10,25,41,0) 100%);
-        }
-        .hero-icon {
-            display: inline-block;
-            margin-bottom: 24px;
-            width: 140px;
-            height: 140px;
-            border-radius: 32px;
-            background: linear-gradient(135deg, #b4dffc 0%, #5ec18e 70%, #2e7d4f 100%);
-            box-shadow:
-                0 10px 40px var(--accent-glow),
-                inset 0 -10px 20px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-        }
-        .hero h1 {
-            font-size: 4em;
-            font-weight: 900;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--gold), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
+        .hero { text-align: center; padding: 100px 24px 60px; }
+        .hero img { max-width: 580px; width: 100%; }
         .hero .tagline {
-            font-size: 1.3em;
+            font-size: 1.25em;
             color: var(--muted);
             max-width: 640px;
-            margin: 0 auto 32px;
+            margin: 24px auto 30px;
         }
-        .badges {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
+        .social-bar {
+            display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
         }
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .social-link {
+            display: inline-flex; align-items: center; gap: 8px;
             background: var(--bg-light);
             border: 1px solid var(--border);
             padding: 10px 18px;
             border-radius: 999px;
-            font-size: 0.9em;
-            color: var(--muted);
-            font-weight: 600;
-        }
-        .badge.coming {
-            background: linear-gradient(135deg, rgba(94,193,142,0.15), rgba(244,196,64,0.15));
-            border-color: var(--accent);
             color: var(--text);
+            text-decoration: none;
+            font-weight: 600; font-size: 0.92em;
+            transition: all 0.2s;
         }
+        .social-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .social-link.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; }
 
-        /* FEATURES */
-        .features-title {
-            text-align: center;
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 {
             font-size: 2.4em;
             font-weight: 800;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .features-sub {
-            text-align: center;
-            color: var(--muted);
-            margin-bottom: 50px;
-            font-size: 1.05em;
+        .section-header p { color: var(--muted); font-size: 1.05em; }
+        .section-header .pretitle {
+            color: var(--accent);
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        .feature {
+
+        /* PROYECTOS (cards grandes) */
+        .project-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 28px;
-            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .feature:hover {
-            transform: translateY(-4px);
+        .project-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(94,193,142,0.15);
+            box-shadow: 0 20px 50px rgba(94,193,142,0.15);
         }
-        .feature .icon {
-            font-size: 36px;
-            margin-bottom: 16px;
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
-        .feature h3 {
-            font-size: 1.15em;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-        .feature p {
-            color: var(--muted);
-            font-size: 0.95em;
-        }
-
-        /* STORY */
-        .story {
-            background: linear-gradient(180deg,
-                rgba(10,25,41,0) 0%,
-                rgba(20,60,100,0.3) 50%,
-                rgba(10,25,41,0) 100%);
-            text-align: center;
-        }
-        .story p {
-            max-width: 720px;
-            margin: 0 auto 20px;
-            font-size: 1.1em;
-            color: var(--muted);
-        }
-        .story p:first-of-type {
-            color: var(--text);
-            font-size: 1.25em;
-            font-style: italic;
-        }
-
-        /* CTA */
-        .cta {
-            text-align: center;
-            background: linear-gradient(135deg, rgba(94,193,142,0.1), rgba(244,196,64,0.05));
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .cta h2 {
-            font-size: 2.2em;
-            margin-bottom: 12px;
+        .project-info h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
             font-weight: 800;
         }
-        .cta p {
-            color: var(--muted);
-            margin-bottom: 32px;
-            font-size: 1.1em;
-        }
-        .btn {
+        .project-info .badge {
             display: inline-block;
-            padding: 14px 28px;
+            background: rgba(94,193,142,0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
             border-radius: 999px;
+            font-size: 0.78em;
             font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.15s, box-shadow 0.2s;
-            margin: 6px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #2e7d4f);
-            color: white;
-            box-shadow: 0 6px 20px var(--accent-glow);
+        .project-info .badge.photo {
+            background: rgba(244,196,64,0.15);
+            color: var(--gold);
+            border-color: var(--gold);
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--accent-glow);
-        }
-        .btn-secondary {
+        .project-info p { color: var(--muted); margin-bottom: 16px; font-size: 1em; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+        .tag {
             background: var(--bg-light);
-            color: var(--text);
             border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.82em;
+            color: var(--muted);
         }
-        .btn-secondary:hover { border-color: var(--accent); }
+        .platforms {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;
+        }
+        .platform-badge {
+            background: var(--bg-light);
+            border: 1px solid var(--accent);
+            padding: 8px 14px;
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* Project visual (game) */
+        .sprite-scene {
+            background: linear-gradient(180deg, #87ceeb 0%, #5ec18e 70%, #2e7d4f 100%);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            min-height: 340px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        .sprite-scene::before {
+            content: '';
+            position: absolute;
+            top: 20px; right: 30px;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffe88a 0%, #f4c440 60%, transparent 100%);
+        }
+        .scene-char { position: absolute; image-rendering: pixelated; }
+        .scene-char.penguin {
+            bottom: 30px; left: 50%; transform: translateX(-50%);
+            width: 110px; animation: bob 1s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .scene-char.enemy {
+            top: 70px; left: 30px; width: 55px;
+            animation: enemyMove 3s ease-in-out infinite;
+        }
+        @keyframes enemyMove {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+        }
+        .scene-char.crown {
+            top: 80px; right: 50px; width: 36px;
+        }
+        .scene-char.sheep {
+            bottom: 30px; right: 40px; width: 60px;
+            animation: bob 1.4s ease-in-out infinite;
+        }
+
+        /* Project visual (photo) */
+        .photo-scene {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 340px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .photo-scene img { max-width: 100%; }
+
+        /* CHARACTERS GALLERY */
+        .characters-gallery {
+            margin-top: 50px;
+        }
+        .characters-gallery h4 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        .characters-gallery .sub {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 14px;
+        }
+        .char {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 10px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .char:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            background: var(--card);
+        }
+        .char img {
+            height: 56px; margin: 0 auto 8px;
+            image-rendering: pixelated;
+        }
+        .char .name { font-size: 0.85em; font-weight: 700; }
+        .char .role { font-size: 0.7em; color: var(--muted); margin-top: 2px; }
+        .char.foe { border-color: rgba(220,80,80,0.3); }
+        .char.foe:hover { border-color: #e44; }
+
+        /* NEWS */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .news-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .news-card .date { color: var(--muted); font-size: 0.82em; margin-bottom: 6px; font-weight: 600; }
+        .news-card h4 { font-size: 1.1em; margin-bottom: 8px; }
+        .news-card p { color: var(--muted); font-size: 0.92em; }
 
         /* FOOTER */
         footer {
@@ -278,156 +321,405 @@
             font-size: 0.9em;
             border-top: 1px solid var(--border);
         }
-        footer a {
-            color: var(--muted);
-            text-decoration: none;
-            margin: 0 12px;
-        }
+        footer a { color: var(--muted); text-decoration: none; margin: 0 12px; }
         footer a:hover { color: var(--accent); }
-        footer .copy {
-            margin-top: 20px;
-            font-size: 0.85em;
+        footer .copy { margin-top: 20px; font-size: 0.85em; }
+        .footer-social {
+            display: flex; gap: 14px; justify-content: center;
+            margin-top: 20px; flex-wrap: wrap;
         }
 
-        @media (max-width: 600px) {
-            .hero { padding: 60px 20px 50px; }
-            .hero h1 { font-size: 2.6em; }
-            .hero-icon { width: 110px; height: 110px; font-size: 62px; }
+        /* MUSIC PLAYER */
+        .music-player {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            width: 290px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 200;
+            pointer-events: none;
+        }
+        .music-player.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .mp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .mp-header h4 { font-size: 0.95em; color: var(--accent); }
+        .mp-close { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 1.1em; }
+        .mp-current { color: var(--text); font-size: 0.92em; margin-bottom: 12px; font-weight: 600; }
+        .mp-controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 14px; }
+        .mp-btn {
+            background: var(--bg-light); border: 1px solid var(--border);
+            color: var(--text); padding: 8px 14px; border-radius: 8px;
+            cursor: pointer; font-size: 0.95em;
+        }
+        .mp-btn.mp-big {
+            background: linear-gradient(135deg, var(--accent), #2e7d4f);
+            color: white; border: none; padding: 8px 18px;
+        }
+        .mp-tracks {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            max-height: 220px; overflow-y: auto;
+        }
+        .mp-track {
+            background: var(--bg-light); border: 1px solid var(--border);
+            color: var(--muted); padding: 8px 10px; border-radius: 8px;
+            cursor: pointer; font-size: 0.8em; text-align: left;
+        }
+        .mp-track:hover { color: var(--text); border-color: var(--accent); }
+        .mp-track.active {
+            background: linear-gradient(135deg, rgba(94,193,142,0.2), rgba(244,196,64,0.1));
+            border-color: var(--accent); color: var(--text);
+        }
+
+        @media (max-width: 700px) {
+            .hero { padding: 60px 20px 40px; }
             section { padding: 60px 20px; }
-            nav .links a { margin-left: 12px; font-size: 0.85em; }
-            .features-title { font-size: 1.8em; }
+            .section-header h2 { font-size: 1.7em; }
+            .project-grid { grid-template-columns: 1fr; gap: 30px; }
+            .project-card { padding: 28px 22px; }
+            .music-player { left: 12px; right: 12px; bottom: 12px; width: auto; }
+            nav .links a { margin-left: 10px; font-size: 0.82em; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-inner">
-            <div class="brand">
-                <span class="brand-icon">🐧</span>
-                <span>Gentoo Adventure</span>
-            </div>
+            <a href="#top" class="brand"><img src="assets/logo.svg" alt="Gentoo Adventure"></a>
             <div class="links">
-                <a href="#features">Características</a>
-                <a href="#story">Historia</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#news">Noticias</a>
                 <a href="privacy.html">Privacidad</a>
+                <button class="music-btn" id="musicBtn" onclick="togglePlayer()">🎵</button>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
-        <div class="hero-icon">🐧</div>
-        <h1>Gentoo Adventure</h1>
+    <section class="hero" id="top">
+        <img src="assets/logo.svg" alt="Gentoo Adventure">
         <p class="tagline">
-            Acompaña a Kentoo en una épica aventura<br>
-            por las islas del sur del mundo
+            Estudio independiente creando juegos y aplicaciones con corazón.
+            Desde Sudamérica hasta el sur del mundo. 🌊🐧
         </p>
-        <div class="badges">
-            <span class="badge coming">📱 Próximamente en App Store</span>
-            <span class="badge coming">🤖 Próximamente en Google Play</span>
+        <div class="social-bar">
+            <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 @gentooadventure</a>
+            <a href="mailto:gentooadventure@gmail.com" class="social-link">📧 Contacto</a>
         </div>
     </section>
 
-    <!-- FEATURES -->
-    <section id="features">
+    <!-- PROYECTOS -->
+    <section id="projects">
         <div class="container">
-            <h2 class="features-title">Una aventura completa</h2>
-            <p class="features-sub">Más de 6 áreas para explorar, combates épicos y un mundo lleno de vida</p>
+            <div class="section-header">
+                <p class="pretitle">Nuestros proyectos</p>
+                <h2>Hecho con corazón indie</h2>
+                <p>Cada app que creamos tiene una historia. Estos son nuestros proyectos actuales.</p>
+            </div>
 
-            <div class="grid">
-                <div class="feature">
-                    <div class="icon">🗺️</div>
-                    <h3>6 áreas únicas</h3>
-                    <p>Isla principal, playa, bosque, cuevas oscuras y la mística cueva de hielo te esperan.</p>
+            <!-- Proyecto 1: Gentoo Adventure (el juego) -->
+            <div class="project-card">
+                <div class="project-grid">
+                    <div class="project-info">
+                        <span class="badge">🎮 Videojuego</span>
+                        <h3>Gentoo Adventure</h3>
+                        <p>Acompaña a Kentoo el pingüino en una aventura épica para devolver
+                        la luz a su isla. Pelea contra el Gran Petrel, descubre la corona dorada
+                        y restaura la paz en las Falklands.</p>
+
+                        <div class="tags">
+                            <span class="tag">🖼️ Pixel art</span>
+                            <span class="tag">🎯 Aventura</span>
+                            <span class="tag">🌎 ES / EN</span>
+                            <span class="tag">👨‍👩‍👧 Familiar</span>
+                            <span class="tag">🔁 New Game+</span>
+                        </div>
+
+                        <div class="platforms">
+                            <div class="platform-badge">📱 iOS — Próximamente</div>
+                            <div class="platform-badge">🤖 Android — Próximamente</div>
+                        </div>
+                    </div>
+
+                    <div class="sprite-scene">
+                        <img src="assets/caracara_0.png" class="scene-char enemy pixel" alt="">
+                        <img src="assets/crown.png" class="scene-char crown pixel" alt="">
+                        <img src="assets/sheep_0.png" class="scene-char sheep pixel" alt="">
+                        <img src="assets/penguin_down_0.png" class="scene-char penguin pixel" alt="">
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="icon">⚔️</div>
-                    <h3>Combate dinámico</h3>
-                    <p>Lanza huevos a tus enemigos, esquiva sus ataques y conviértete en el mejor pingüino guerrero.</p>
+
+                <!-- Galería completa de personajes -->
+                <div class="characters-gallery">
+                    <h4>🐧 Conoce a los habitantes de la isla</h4>
+                    <p class="sub">Más de 15 personajes únicos esperan en el juego</p>
+
+                    <!-- PROTAGONISTA -->
+                    <h5 style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 20px 0 12px; text-align:center;">PROTAGONISTA</h5>
+                    <div class="char-grid">
+                        <div class="char">
+                            <img src="assets/penguin_down_0.png" alt="Kentoo">
+                            <div class="name">Kentoo</div>
+                            <div class="role">El héroe</div>
+                        </div>
+                    </div>
+
+                    <!-- NPCS AMIGOS -->
+                    <h5 style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ALIADOS</h5>
+                    <div class="char-grid">
+                        <div class="char">
+                            <img src="assets/npc_abuela.png" alt="Abuela">
+                            <div class="name">Abuela</div>
+                            <div class="role">Mentora sabia</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_shopkeeper.png" alt="Tendero">
+                            <div class="name">Tendero</div>
+                            <div class="role">Foca comerciante</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_luna.png" alt="Luna">
+                            <div class="name">Luna</div>
+                            <div class="role">Exploradora</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_bruno.png" alt="Bruno">
+                            <div class="name">Bruno</div>
+                            <div class="role">Aventurero</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_pip.png" alt="Pip">
+                            <div class="name">Pip</div>
+                            <div class="role">Cartógrafo</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_nieve.png" alt="Nieve">
+                            <div class="name">Nieve</div>
+                            <div class="role">Sanadora</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_pulpo.png" alt="Pulpo">
+                            <div class="name">Pulpo</div>
+                            <div class="role">Sabio del mar</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/npc_watcher.png" alt="Vigía">
+                            <div class="name">Vigía</div>
+                            <div class="role">Mira el horizonte</div>
+                        </div>
+                    </div>
+
+                    <!-- ENEMIGOS -->
+                    <h5 style="color:#e88; font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ENEMIGOS</h5>
+                    <div class="char-grid">
+                        <div class="char foe">
+                            <img src="assets/caracara_0.png" alt="Caracara">
+                            <div class="name">Caracara</div>
+                            <div class="role">Ave agresiva</div>
+                        </div>
+                        <div class="char foe">
+                            <img src="assets/gull_0.png" alt="Gaviota">
+                            <div class="name">Gaviota</div>
+                            <div class="role">Patrulla la playa</div>
+                        </div>
+                        <div class="char foe">
+                            <img src="assets/skua_0.png" alt="Skúa">
+                            <div class="name">Skúa</div>
+                            <div class="role">Veloz, peligrosa</div>
+                        </div>
+                        <div class="char foe">
+                            <img src="assets/fox_left.png" alt="Zorro">
+                            <div class="name">Zorro</div>
+                            <div class="role">Acecha en el bosque</div>
+                        </div>
+                        <div class="char foe">
+                            <img src="assets/orca_0.png" alt="Orca">
+                            <div class="name">Orca</div>
+                            <div class="role">Reina del mar</div>
+                        </div>
+                        <div class="char foe">
+                            <img src="assets/octopus_0.png" alt="Pulpo enemigo">
+                            <div class="name">Pulpo salvaje</div>
+                            <div class="role">Brazos por todos lados</div>
+                        </div>
+                    </div>
+
+                    <!-- FAUNA Y FLORA -->
+                    <h5 style="color:var(--gold); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">FAUNA Y FLORA</h5>
+                    <div class="char-grid">
+                        <div class="char">
+                            <img src="assets/sheep_0.png" alt="Oveja blanca">
+                            <div class="name">Oveja blanca</div>
+                            <div class="role">Pastando tranquila</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/sheep_2.png" alt="Oveja rosada">
+                            <div class="name">Oveja rosada</div>
+                            <div class="role">La más coqueta</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/sheep_3.png" alt="Oveja con campana">
+                            <div class="name">Oveja líder</div>
+                            <div class="role">Lleva campana</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/tussac_1.png" alt="Tussac">
+                            <div class="name">Tussac</div>
+                            <div class="role">Pasto de las islas</div>
+                        </div>
+                        <div class="char">
+                            <img src="assets/crown.png" alt="Corona">
+                            <div class="name">Corona</div>
+                            <div class="role">Tesoro mayor</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="icon">👑</div>
-                    <h3>Jefes y Mini-Jefes</h3>
-                    <p>Enfrenta al temido Gran Petrel y mini-jefes esparcidos por cada área del mapa.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🎩</div>
-                    <h3>Sombreros y tesoros</h3>
-                    <p>Descubre cofres con coronas, sombreros raros y collares para personalizar a Kentoo.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🐧</div>
-                    <h3>NPCs con personalidad</h3>
-                    <p>Habla con la abuela, el tendero foca, Luna la exploradora y muchos más.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🌅</div>
-                    <h3>Ciclo día/noche</h3>
-                    <p>El mundo cambia con el tiempo. De noche los enemigos son más rápidos. Duerme en un nido para descansar.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🌧️</div>
-                    <h3>Clima dinámico</h3>
-                    <p>Nieve en la cueva de hielo, lluvia en el bosque, brisa en la playa. Cada zona se siente única.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">💾</div>
-                    <h3>3 partidas paralelas</h3>
-                    <p>Sistema de slots para que toda la familia tenga su propia aventura.</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🔁</div>
-                    <h3>New Game+</h3>
-                    <p>Al vencer al jefe, desbloqueás un modo con enemigos más fuertes y nuevos retos.</p>
+            </div>
+
+            <!-- Proyecto 2: GENTO Photo Editor -->
+            <div class="project-card">
+                <div class="project-grid">
+                    <div class="project-info">
+                        <span class="badge photo">📸 Aplicación</span>
+                        <h3>GENTO Photo Editor</h3>
+                        <p>Editor de fotos minimalista y elegante. Filtros profesionales,
+                        ajustes finos, recortes precisos y herramientas creativas.
+                        Diseñado para quienes aman la fotografía móvil.</p>
+
+                        <div class="tags">
+                            <span class="tag">🎨 Filtros</span>
+                            <span class="tag">⚙️ Ajustes</span>
+                            <span class="tag">✂️ Recorte</span>
+                            <span class="tag">📝 Texto</span>
+                            <span class="tag">💧 Marca de agua</span>
+                            <span class="tag">🪄 Borrador</span>
+                        </div>
+
+                        <div class="platforms">
+                            <div class="platform-badge">📱 iOS — En desarrollo</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-scene">
+                        <img src="assets/gento_photo_logo_pro.svg" alt="GENTO Photo Editor" style="max-width: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STORY -->
-    <section id="story" class="story">
+    <!-- NEWS -->
+    <section id="news">
         <div class="container">
-            <h2 class="features-title">La historia</h2>
-            <p>
-                "Hay una isla al sur del mundo<br>
-                donde el viento aprende a cantar."
-            </p>
-            <p>
-                Kentoo es un pequeño pingüino gentoo que vive feliz en una pequeña isla del sur del mundo,
-                donde las gaviotas gritan y los tussacs se mueven con el viento.
-            </p>
-            <p>
-                Pero una mañana, el cielo se nubló y algo oscuro despertó en el mar.
-                El Gran Petrel, antiguo guardián de las tormentas, ha vuelto y necesita ser detenido.
-            </p>
-            <p>
-                Con un huevo dorado en sus alas y el coraje de su abuela en el corazón,
-                Kentoo debe cruzar bosques, cuevas y mares para devolver la luz a su hogar.
-            </p>
+            <div class="section-header">
+                <p class="pretitle">Lo último</p>
+                <h2>Noticias y anuncios</h2>
+                <p>Mantente al día con nuestro progreso</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="date">2026 — Q1</div>
+                    <h4>🚀 Gentoo Adventure en pulido final</h4>
+                    <p>El juego está en sus últimos detalles. Audio, testing y App Store.</p>
+                </div>
+                <div class="news-card">
+                    <div class="date">2026 — Q1</div>
+                    <h4>📸 GENTO Photo Editor anunciado</h4>
+                    <p>Nuestro segundo proyecto: editor de fotos minimalista en desarrollo.</p>
+                </div>
+                <div class="news-card">
+                    <div class="date">2026</div>
+                    <h4>📱 Beta TestFlight próximamente</h4>
+                    <p>Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <h2>¿Querés saber cuándo lanzamos?</h2>
-            <p>Escribinos y te avisamos apenas esté disponible</p>
-            <a href="mailto:gentooadventure@gmail.com?subject=Quiero%20saber%20cuando%20lanza%20Gentoo%20Adventure"
-               class="btn btn-primary">📧 Notificarme del lanzamiento</a>
-            <a href="privacy.html" class="btn btn-secondary">📋 Política de Privacidad</a>
+    <!-- AUDIO -->
+    <div id="musicPlayer" class="music-player">
+        <div class="mp-header">
+            <h4>🎧 Música de Gentoo Adventure</h4>
+            <button class="mp-close" onclick="togglePlayer()">✕</button>
         </div>
-    </section>
+        <p class="mp-current" id="mpCurrent">Elegí una pista</p>
+        <div class="mp-controls">
+            <button onclick="playPrev()" class="mp-btn">⏮</button>
+            <button onclick="playPause()" class="mp-btn mp-big" id="mpPlay">▶</button>
+            <button onclick="playNext()" class="mp-btn">⏭</button>
+        </div>
+        <div class="mp-tracks">
+            <button class="mp-track" data-src="assets/music/music_title.wav" data-name="🎭 Título">Título</button>
+            <button class="mp-track" data-src="assets/music/music_island.mp3" data-name="🏝️ Isla">Isla</button>
+            <button class="mp-track" data-src="assets/music/music_forest.mp3" data-name="🌲 Bosque">Bosque</button>
+            <button class="mp-track" data-src="assets/music/music_cave1.mp3" data-name="🗿 Cueva 1">Cueva 1</button>
+            <button class="mp-track" data-src="assets/music/music_cave2.mp3" data-name="🗿 Cueva 2">Cueva 2</button>
+            <button class="mp-track" data-src="assets/music/music_ice.mp3" data-name="❄️ Hielo">Hielo</button>
+            <button class="mp-track" data-src="assets/music/music_boss.mp3" data-name="👑 Jefe">Jefe</button>
+            <button class="mp-track" data-src="assets/victory.mp3" data-name="🏆 Victoria">Victoria</button>
+        </div>
+    </div>
+    <audio id="bgMusic" preload="none"></audio>
 
     <footer>
-        <div>
-            <a href="mailto:gentooadventure@gmail.com">Contacto</a>
+        <div class="footer-social">
+            <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 Instagram</a>
+            <a href="mailto:gentooadventure@gmail.com" class="social-link">📧 Email</a>
+        </div>
+        <div style="margin-top:20px;">
+            <a href="#projects">Proyectos</a>
+            <a href="#news">Noticias</a>
             <a href="privacy.html">Privacidad</a>
-            <a href="#features">Características</a>
-            <a href="#story">Historia</a>
         </div>
-        <div class="copy">
-            © 2026 Gentoo Adventure · Creado con ❤️ por Carlos Vásquez
-        </div>
+        <div class="copy">© 2026 Gentoo Adventure · Indie Games & Apps · Por Carlos Vásquez</div>
     </footer>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const player = document.getElementById('musicPlayer');
+        const navBtn = document.getElementById('musicBtn');
+        const playBtn = document.getElementById('mpPlay');
+        const currentLabel = document.getElementById('mpCurrent');
+        const tracks = Array.from(document.querySelectorAll('.mp-track'));
+        let currentIndex = -1;
+        audio.volume = 0.4;
+
+        function togglePlayer() { player.classList.toggle('open'); }
+        function loadTrack(i) {
+            if (i < 0 || i >= tracks.length) return;
+            const t = tracks[i];
+            audio.src = t.dataset.src;
+            currentLabel.textContent = t.dataset.name;
+            tracks.forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+            currentIndex = i;
+        }
+        function playTrack(i) {
+            loadTrack(i);
+            audio.play().then(() => {
+                playBtn.textContent = '⏸';
+                navBtn.classList.add('playing');
+                navBtn.textContent = '🔊';
+            }).catch(() => {});
+        }
+        function playPause() {
+            if (currentIndex === -1) { playTrack(1); return; }
+            if (audio.paused) {
+                audio.play(); playBtn.textContent = '⏸';
+                navBtn.classList.add('playing'); navBtn.textContent = '🔊';
+            } else {
+                audio.pause(); playBtn.textContent = '▶';
+                navBtn.classList.remove('playing'); navBtn.textContent = '🎵';
+            }
+        }
+        function playPrev() { playTrack((currentIndex - 1 + tracks.length) % tracks.length); }
+        function playNext() { playTrack((currentIndex + 1) % tracks.length); }
+        tracks.forEach((t, i) => t.addEventListener('click', () => playTrack(i)));
+        audio.addEventListener('ended', playNext);
+    </script>
 </body>
 </html>
