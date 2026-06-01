@@ -218,28 +218,102 @@
             background: radial-gradient(circle, #ffe88a 0%, #f4c440 60%, transparent 100%);
         }
         .scene-char { position: absolute; image-rendering: pixelated; }
+        .scene-char img { display: block; image-rendering: pixelated; }
+        /* Frames apilados para animación 2-frames */
+        .anim-2f { position: absolute; }
+        .anim-2f .frame {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+        .anim-2f .frame-b {
+            opacity: 0;
+            animation: framesFlip 0.45s steps(1, end) infinite;
+        }
+        .anim-2f .frame-a {
+            animation: framesFlipInv 0.45s steps(1, end) infinite;
+        }
+        @keyframes framesFlip {
+            0%, 49% { opacity: 0; }
+            50%, 100% { opacity: 1; }
+        }
+        @keyframes framesFlipInv {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* PINGÜINO — camina con bobbing */
         .scene-char.penguin {
-            bottom: 30px; left: 50%; transform: translateX(-50%);
-            width: 110px; animation: bob 1s ease-in-out infinite;
+            bottom: 30px; left: 50%; width: 110px; height: 110px;
+            margin-left: -55px;
+            animation: penguinBob 0.9s ease-in-out infinite;
         }
-        @keyframes bob {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-8px); }
+        @keyframes penguinBob {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
         }
+
+        /* CARACARA — vuela con flameo + movimiento ondulante */
         .scene-char.enemy {
-            top: 70px; left: 30px; width: 55px;
-            animation: enemyMove 3s ease-in-out infinite;
+            top: 60px; left: 30px; width: 70px; height: 70px;
+            animation: enemyFly 4s ease-in-out infinite;
         }
-        @keyframes enemyMove {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(30px); }
+        @keyframes enemyFly {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(40px, -10px); }
+            50% { transform: translate(80px, 5px); }
+            75% { transform: translate(40px, -8px); }
+            100% { transform: translate(0, 0); }
         }
+        /* Aceleramos el flameo del caracara */
+        .scene-char.enemy .frame-b { animation-duration: 0.22s; }
+        .scene-char.enemy .frame-a { animation-duration: 0.22s; }
+
+        /* CORONA — gira y brilla */
         .scene-char.crown {
-            top: 80px; right: 50px; width: 36px;
+            top: 80px; right: 50px; width: 42px; height: 42px;
+            animation: crownSpin 3s ease-in-out infinite;
         }
+        @keyframes crownSpin {
+            0%, 100% { transform: scale(1) rotate(-8deg); }
+            50% { transform: scale(1.15) rotate(8deg); }
+        }
+        .sparkle-host { position: relative; }
+        .sparkle {
+            position: absolute;
+            font-size: 14px;
+            pointer-events: none;
+            animation: sparkleFade 1.6s ease-in-out infinite;
+        }
+        .sparkle.s1 { top: -10px; right: -10px; animation-delay: 0s; }
+        .sparkle.s2 { bottom: -8px; left: -10px; animation-delay: 0.8s; }
+        @keyframes sparkleFade {
+            0%, 100% { opacity: 0; transform: scale(0.6); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* OVEJA — camina balanceándose */
         .scene-char.sheep {
-            bottom: 30px; right: 40px; width: 60px;
-            animation: bob 1.4s ease-in-out infinite;
+            bottom: 30px; right: 40px; width: 65px; height: 65px;
+            animation: sheepWalk 2.5s ease-in-out infinite;
+        }
+        @keyframes sheepWalk {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-15px) translateY(-3px); }
+            50% { transform: translateX(0) translateY(0); }
+            75% { transform: translateX(-15px) translateY(-3px); }
+        }
+        .scene-char.sheep .frame-b { animation-duration: 0.6s; }
+        .scene-char.sheep .frame-a { animation-duration: 0.6s; }
+
+        /* PULPO — flota atrás */
+        .scene-char.pulpo {
+            top: 130px; right: 100px; width: 50px; height: 50px;
+            animation: pulpoFloat 3s ease-in-out infinite;
+            opacity: 0.85;
+        }
+        @keyframes pulpoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
 
         /* Project visual (photo) */
@@ -446,10 +520,31 @@
                     </div>
 
                     <div class="sprite-scene">
-                        <img src="assets/caracara_0.png" class="scene-char enemy pixel" alt="">
-                        <img src="assets/crown.png" class="scene-char crown pixel" alt="">
-                        <img src="assets/sheep_0.png" class="scene-char sheep pixel" alt="">
-                        <img src="assets/penguin_down_0.png" class="scene-char penguin pixel" alt="">
+                        <!-- Caracara con flameo de alas (2 frames) -->
+                        <div class="scene-char enemy anim-2f">
+                            <img src="assets/caracara_0.png" class="frame frame-a pixel">
+                            <img src="assets/caracara_1.png" class="frame frame-b pixel">
+                        </div>
+                        <!-- Corona girando + brillo -->
+                        <div class="scene-char crown sparkle-host">
+                            <img src="assets/crown.png" class="pixel" style="width:100%;">
+                            <span class="sparkle s1">✨</span>
+                            <span class="sparkle s2">✨</span>
+                        </div>
+                        <!-- Oveja con balanceo (alterna 2 sprites) -->
+                        <div class="scene-char sheep anim-2f">
+                            <img src="assets/sheep_0.png" class="frame frame-a pixel">
+                            <img src="assets/sheep_2.png" class="frame frame-b pixel">
+                        </div>
+                        <!-- Pingüino con paso (alterna penguin_down_0 con left+right como walk) -->
+                        <div class="scene-char penguin anim-2f">
+                            <img src="assets/penguin_down_0.png" class="frame frame-a pixel">
+                            <img src="assets/penguin_left_0.png" class="frame frame-b pixel">
+                        </div>
+                        <!-- Pulpo amigable flotando atrás -->
+                        <div class="scene-char pulpo">
+                            <img src="assets/npc_pulpo.png" class="pixel" style="width:100%;">
+                        </div>
                     </div>
                 </div>
 
