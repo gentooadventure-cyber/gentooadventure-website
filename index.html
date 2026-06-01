@@ -217,60 +217,125 @@
             border-radius: 50%;
             background: radial-gradient(circle, #ffe88a 0%, #f4c440 60%, transparent 100%);
         }
-        .scene-char { position: absolute; image-rendering: pixelated; }
+        /* ═══ ESCENA CON TODOS LOS PERSONAJES ═══ */
+        .sprite-scene { min-height: 420px; }
+        .scene-char { position: absolute; image-rendering: pixelated; display: block; }
         .scene-char img { display: block; image-rendering: pixelated; }
-        /* Frames apilados para animación 2-frames */
-        .anim-2f { position: absolute; }
+
+        /* Frames 2-pose para flameo de alas/caminata */
         .anim-2f .frame {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
         }
-        .anim-2f .frame-b {
-            opacity: 0;
-            animation: framesFlip 0.45s steps(1, end) infinite;
+        .anim-2f .frame-b { opacity: 0; animation: framesFlip 0.45s steps(1, end) infinite; }
+        .anim-2f .frame-a { animation: framesFlipInv 0.45s steps(1, end) infinite; }
+        @keyframes framesFlip    { 0%, 49% { opacity: 0; } 50%, 100% { opacity: 1; } }
+        @keyframes framesFlipInv { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+        /* ─── VEGETACIÓN DE FONDO ─── */
+        .scene-char.tussac { width: 36px; height: 36px; opacity: 0.85; animation: sway 3s ease-in-out infinite; }
+        .scene-char.tussac.t1 { bottom: 50px; left: 30px; }
+        .scene-char.tussac.t2 { bottom: 80px; right: 130px; animation-delay: 0.7s; }
+        .scene-char.tussac.t3 { bottom: 35px; left: 230px; animation-delay: 1.4s; transform: scale(0.8); }
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
         }
-        .anim-2f .frame-a {
-            animation: framesFlipInv 0.45s steps(1, end) infinite;
+        .scene-char.tree { bottom: 60px; right: 20px; width: 70px; opacity: 0.9; }
+
+        /* ─── AVES VOLANDO ─── */
+        .scene-char.gull {
+            top: 30px; width: 50px; height: 50px;
+            animation: flyAcross 9s linear infinite;
         }
-        @keyframes framesFlip {
-            0%, 49% { opacity: 0; }
-            50%, 100% { opacity: 1; }
-        }
-        @keyframes framesFlipInv {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
+        .scene-char.gull .frame-b { animation-duration: 0.32s; }
+        .scene-char.gull .frame-a { animation-duration: 0.32s; }
+        @keyframes flyAcross {
+            0% { left: -60px; top: 30px; }
+            50% { left: 50%; top: 50px; }
+            100% { left: calc(100% + 20px); top: 30px; }
         }
 
-        /* PINGÜINO — camina con bobbing */
+        .scene-char.caracara {
+            top: 70px; width: 60px; height: 60px;
+            animation: flyAcrossRev 11s linear infinite;
+        }
+        .scene-char.caracara .frame-b { animation-duration: 0.24s; }
+        .scene-char.caracara .frame-a { animation-duration: 0.24s; }
+        @keyframes flyAcrossRev {
+            0% { right: -60px; top: 70px; }
+            50% { right: 40%; top: 90px; }
+            100% { right: calc(100% + 30px); top: 60px; }
+        }
+
+        .scene-char.skua {
+            top: 15px; right: 80px; width: 40px;
+            animation: skuaFloat 5s ease-in-out infinite;
+        }
+        @keyframes skuaFloat {
+            0%, 100% { transform: translate(0, 0) scaleX(-1); }
+            50% { transform: translate(-25px, 8px) scaleX(-1); }
+        }
+
+        /* ─── PINGÜINO PROTAGONISTA ─── */
         .scene-char.penguin {
-            bottom: 30px; left: 50%; width: 110px; height: 110px;
-            margin-left: -55px;
+            bottom: 30px; left: 50%; width: 100px; height: 100px;
+            margin-left: -50px;
             animation: penguinBob 0.9s ease-in-out infinite;
+            z-index: 10;
         }
         @keyframes penguinBob {
             0%, 100% { transform: translateY(0) rotate(-2deg); }
             50% { transform: translateY(-10px) rotate(2deg); }
         }
 
-        /* CARACARA — vuela con flameo + movimiento ondulante */
-        .scene-char.enemy {
-            top: 60px; left: 30px; width: 70px; height: 70px;
-            animation: enemyFly 4s ease-in-out infinite;
+        /* ─── NPCs AMIGOS ─── */
+        .scene-char.npc { width: 50px; height: 50px; animation: npcBob 1.6s ease-in-out infinite; }
+        .scene-char.abuela { bottom: 40px; left: 15%; animation-delay: 0s; }
+        .scene-char.luna   { bottom: 35px; right: 18%; animation-delay: 0.4s; width: 48px; }
+        .scene-char.bruno  { bottom: 45px; left: 30%; animation-delay: 0.8s; width: 56px; }
+        .scene-char.pip    { bottom: 38px; right: 32%; animation-delay: 1.2s; width: 46px; }
+        @keyframes npcBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
-        @keyframes enemyFly {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(40px, -10px); }
-            50% { transform: translate(80px, 5px); }
-            75% { transform: translate(40px, -8px); }
-            100% { transform: translate(0, 0); }
-        }
-        /* Aceleramos el flameo del caracara */
-        .scene-char.enemy .frame-b { animation-duration: 0.22s; }
-        .scene-char.enemy .frame-a { animation-duration: 0.22s; }
 
-        /* CORONA — gira y brilla */
+        /* ─── OVEJAS ─── */
+        .scene-char.sheep {
+            bottom: 30px; right: 25px; width: 50px; height: 50px;
+            animation: sheepWalk 3s ease-in-out infinite;
+        }
+        .scene-char.sheep .frame-b { animation-duration: 0.6s; }
+        .scene-char.sheep .frame-a { animation-duration: 0.6s; }
+        @keyframes sheepWalk {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-15px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(0); }
+            75% { transform: translateX(-15px) translateY(-2px); }
+        }
+        .scene-char.sheep-static { width: 38px; animation: sheepIdle 2.4s ease-in-out infinite; }
+        .scene-char.sheep-static.s2 { bottom: 50px; left: 42%; }
+        .scene-char.sheep-static.s3 { bottom: 45px; right: 38%; animation-delay: 1s; }
+        @keyframes sheepIdle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* ─── ZORRO ─── */
+        .scene-char.fox {
+            bottom: 30px; left: 8%; width: 60px; height: 50px;
+            animation: foxProwl 5s ease-in-out infinite;
+        }
+        .scene-char.fox .frame-b { animation-duration: 1.2s; }
+        .scene-char.fox .frame-a { animation-duration: 1.2s; }
+        @keyframes foxProwl {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(40px); }
+        }
+
+        /* ─── CORONA ─── */
         .scene-char.crown {
-            top: 80px; right: 50px; width: 42px; height: 42px;
+            top: 50px; left: 50%; margin-left: -22px; width: 44px; height: 44px;
             animation: crownSpin 3s ease-in-out infinite;
         }
         @keyframes crownSpin {
@@ -279,41 +344,33 @@
         }
         .sparkle-host { position: relative; }
         .sparkle {
-            position: absolute;
-            font-size: 14px;
-            pointer-events: none;
+            position: absolute; font-size: 14px; pointer-events: none;
             animation: sparkleFade 1.6s ease-in-out infinite;
         }
-        .sparkle.s1 { top: -10px; right: -10px; animation-delay: 0s; }
+        .sparkle.s1 { top: -10px; right: -10px; }
         .sparkle.s2 { bottom: -8px; left: -10px; animation-delay: 0.8s; }
         @keyframes sparkleFade {
             0%, 100% { opacity: 0; transform: scale(0.6); }
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* OVEJA — camina balanceándose */
-        .scene-char.sheep {
-            bottom: 30px; right: 40px; width: 65px; height: 65px;
-            animation: sheepWalk 2.5s ease-in-out infinite;
+        /* ─── MAR (orca y pulpo) ─── */
+        .scene-char.orca {
+            bottom: -10px; left: 38%; width: 80px;
+            animation: orcaJump 4s ease-in-out infinite;
         }
-        @keyframes sheepWalk {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-15px) translateY(-3px); }
-            50% { transform: translateX(0) translateY(0); }
-            75% { transform: translateX(-15px) translateY(-3px); }
+        @keyframes orcaJump {
+            0%, 70%, 100% { transform: translateY(40px); opacity: 0.4; }
+            85% { transform: translateY(-10px) rotate(-15deg); opacity: 1; }
         }
-        .scene-char.sheep .frame-b { animation-duration: 0.6s; }
-        .scene-char.sheep .frame-a { animation-duration: 0.6s; }
-
-        /* PULPO — flota atrás */
         .scene-char.pulpo {
-            top: 130px; right: 100px; width: 50px; height: 50px;
-            animation: pulpoFloat 3s ease-in-out infinite;
-            opacity: 0.85;
+            bottom: 5px; right: 5px; width: 46px;
+            animation: pulpoFloat 3.5s ease-in-out infinite;
+            opacity: 0.92;
         }
         @keyframes pulpoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
         }
 
         /* Project visual (photo) */
@@ -520,31 +577,59 @@
                     </div>
 
                     <div class="sprite-scene">
-                        <!-- Caracara con flameo de alas (2 frames) -->
-                        <div class="scene-char enemy anim-2f">
+                        <!-- 🌳 Vegetación de fondo -->
+                        <img src="assets/tussac_1.png" class="scene-char tussac t1 pixel">
+                        <img src="assets/tussac_1.png" class="scene-char tussac t2 pixel">
+                        <img src="assets/tussac_1.png" class="scene-char tussac t3 pixel">
+                        <img src="assets/tree_pine_2.png" class="scene-char tree pixel">
+
+                        <!-- 🦅 Aves volando arriba -->
+                        <div class="scene-char gull anim-2f">
+                            <img src="assets/gull_0.png" class="frame frame-a pixel">
+                            <img src="assets/gull_1.png" class="frame frame-b pixel">
+                        </div>
+                        <div class="scene-char caracara anim-2f">
                             <img src="assets/caracara_0.png" class="frame frame-a pixel">
                             <img src="assets/caracara_1.png" class="frame frame-b pixel">
                         </div>
-                        <!-- Corona girando + brillo -->
+                        <img src="assets/skua_0.png" class="scene-char skua pixel">
+
+                        <!-- 🐑 Ovejitas pastando -->
+                        <div class="scene-char sheep s1 anim-2f">
+                            <img src="assets/sheep_0.png" class="frame frame-a pixel">
+                            <img src="assets/sheep_2.png" class="frame frame-b pixel">
+                        </div>
+                        <img src="assets/sheep_1.png" class="scene-char sheep-static s2 pixel">
+                        <img src="assets/sheep_3.png" class="scene-char sheep-static s3 pixel">
+
+                        <!-- 🦊 Zorro acechando -->
+                        <div class="scene-char fox anim-2f">
+                            <img src="assets/fox_left.png" class="frame frame-a pixel">
+                            <img src="assets/fox_right.png" class="frame frame-b pixel">
+                        </div>
+
+                        <!-- 🐧 NPCs amigos a los lados -->
+                        <img src="assets/npc_abuela.png" class="scene-char npc abuela pixel">
+                        <img src="assets/npc_luna.png" class="scene-char npc luna pixel">
+                        <img src="assets/npc_bruno.png" class="scene-char npc bruno pixel">
+                        <img src="assets/npc_pip.png" class="scene-char npc pip pixel">
+
+                        <!-- 👑 Corona dorada con brillos -->
                         <div class="scene-char crown sparkle-host">
                             <img src="assets/crown.png" class="pixel" style="width:100%;">
                             <span class="sparkle s1">✨</span>
                             <span class="sparkle s2">✨</span>
                         </div>
-                        <!-- Oveja con balanceo (alterna 2 sprites) -->
-                        <div class="scene-char sheep anim-2f">
-                            <img src="assets/sheep_0.png" class="frame frame-a pixel">
-                            <img src="assets/sheep_2.png" class="frame frame-b pixel">
-                        </div>
-                        <!-- Pingüino con paso (alterna penguin_down_0 con left+right como walk) -->
+
+                        <!-- 🐧 KENTOO protagonista al centro -->
                         <div class="scene-char penguin anim-2f">
                             <img src="assets/penguin_down_0.png" class="frame frame-a pixel">
                             <img src="assets/penguin_left_0.png" class="frame frame-b pixel">
                         </div>
-                        <!-- Pulpo amigable flotando atrás -->
-                        <div class="scene-char pulpo">
-                            <img src="assets/npc_pulpo.png" class="pixel" style="width:100%;">
-                        </div>
+
+                        <!-- 🐙 Pulpo y 🦭 mar -->
+                        <img src="assets/npc_pulpo.png" class="scene-char pulpo pixel">
+                        <img src="assets/orca_0.png" class="scene-char orca pixel">
                     </div>
                 </div>
 
