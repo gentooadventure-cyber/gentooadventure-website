@@ -76,17 +76,21 @@
             transition: color 0.2s;
         }
         nav .links a:hover { color: var(--text); }
-        nav .music-btn {
-            margin-left: 16px;
+        nav .music-btn, nav .lang-btn {
+            margin-left: 12px;
             background: transparent;
             border: 1px solid var(--border);
             color: var(--muted);
             padding: 6px 10px;
             border-radius: 999px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 0.88em;
+            font-weight: 600;
+            transition: all 0.2s;
         }
+        nav .music-btn { font-size: 1.1em; }
         nav .music-btn.playing { color: var(--gold); border-color: var(--gold); }
+        nav .lang-btn:hover { color: var(--text); border-color: var(--accent); }
 
         section { position: relative; z-index: 1; padding: 80px 24px; }
         .container { max-width: 1100px; margin: 0 auto; }
@@ -547,9 +551,10 @@
         <div class="nav-inner">
             <a href="#top" class="brand"><img src="assets/logo.svg" alt="Gentoo Adventure"></a>
             <div class="links">
-                <a href="#projects">Proyectos</a>
-                <a href="#news">Noticias</a>
-                <a href="privacy.html">Privacidad</a>
+                <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="#news" data-es="Noticias" data-en="News">Noticias</a>
+                <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
+                <button class="lang-btn" id="langBtn" onclick="toggleLang()" title="Cambiar idioma">🌐 ES</button>
                 <button class="music-btn" id="musicBtn" onclick="togglePlayer()">🎵</button>
             </div>
         </div>
@@ -558,13 +563,16 @@
     <!-- HERO -->
     <section class="hero" id="top">
         <img src="assets/logo.svg" alt="Gentoo Adventure">
-        <p class="tagline">
+        <p class="tagline"
+           data-es="Estudio independiente creando juegos y aplicaciones con corazón. Desde Sudamérica hasta el sur del mundo. 🌊🐧"
+           data-en="Independent studio creating games and apps with heart. From South America to the south of the world. 🌊🐧">
             Estudio independiente creando juegos y aplicaciones con corazón.
             Desde Sudamérica hasta el sur del mundo. 🌊🐧
         </p>
         <div class="social-bar">
             <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 @gentooadventure</a>
-            <a href="mailto:gentooadventure@gmail.com" class="social-link">📧 Contacto</a>
+            <a href="mailto:gentooadventure@gmail.com" class="social-link"
+               data-es="📧 Contacto" data-en="📧 Contact">📧 Contacto</a>
         </div>
     </section>
 
@@ -572,32 +580,36 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <p class="pretitle">Nuestros proyectos</p>
-                <h2>Hecho con corazón indie</h2>
-                <p>Cada app que creamos tiene una historia. Estos son nuestros proyectos actuales.</p>
+                <p class="pretitle" data-es="Nuestros proyectos" data-en="Our projects">Nuestros proyectos</p>
+                <h2 data-es="Hecho con corazón indie" data-en="Made with indie heart">Hecho con corazón indie</h2>
+                <p data-es="Cada app que creamos tiene una historia. Estos son nuestros proyectos actuales."
+                   data-en="Every app we create has a story. These are our current projects.">
+                    Cada app que creamos tiene una historia. Estos son nuestros proyectos actuales.</p>
             </div>
 
             <!-- Proyecto 1: Gentoo Adventure (el juego) -->
             <div class="project-card">
                 <div class="project-grid">
                     <div class="project-info">
-                        <span class="badge">🎮 Videojuego</span>
+                        <span class="badge" data-es="🎮 Videojuego" data-en="🎮 Video Game">🎮 Videojuego</span>
                         <h3>Gentoo Adventure</h3>
-                        <p>Acompaña a Kentoo el pingüino en una aventura épica para devolver
-                        la luz a su isla. Pelea contra el Gran Petrel, descubre la corona dorada
-                        y restaura la paz en las Falklands.</p>
+                        <p data-es="Acompaña a Kentoo el pingüino en una aventura épica para devolver la luz a su isla. Pelea contra el Gran Petrel, descubre la corona dorada y restaura la paz en las Falklands."
+                           data-en="Join Kentoo the penguin on an epic adventure to bring back the light to his island. Fight the Great Petrel, find the golden crown and restore peace to the Falklands.">
+                            Acompaña a Kentoo el pingüino en una aventura épica para devolver
+                            la luz a su isla. Pelea contra el Gran Petrel, descubre la corona dorada
+                            y restaura la paz en las Falklands.</p>
 
                         <div class="tags">
                             <span class="tag">🖼️ Pixel art</span>
-                            <span class="tag">🎯 Aventura</span>
+                            <span class="tag" data-es="🎯 Aventura" data-en="🎯 Adventure">🎯 Aventura</span>
                             <span class="tag">🌎 ES / EN</span>
-                            <span class="tag">👨‍👩‍👧 Familiar</span>
+                            <span class="tag" data-es="👨‍👩‍👧 Familiar" data-en="👨‍👩‍👧 Family">👨‍👩‍👧 Familiar</span>
                             <span class="tag">🔁 New Game+</span>
                         </div>
 
                         <div class="platforms">
-                            <div class="platform-badge">📱 iOS — Próximamente</div>
-                            <div class="platform-badge">🤖 Android — Próximamente</div>
+                            <div class="platform-badge" data-es="📱 iOS — Próximamente" data-en="📱 iOS — Coming Soon">📱 iOS — Próximamente</div>
+                            <div class="platform-badge" data-es="🤖 Android — Próximamente" data-en="🤖 Android — Coming Soon">🤖 Android — Próximamente</div>
                         </div>
                     </div>
 
@@ -608,11 +620,14 @@
 
                 <!-- Galería completa de personajes -->
                 <div class="characters-gallery">
-                    <h4>🐧 Conoce a los habitantes de la isla</h4>
-                    <p class="sub">Más de 15 personajes únicos esperan en el juego</p>
+                    <h4 data-es="🐧 Conoce a los habitantes de la isla"
+                        data-en="🐧 Meet the island inhabitants">🐧 Conoce a los habitantes de la isla</h4>
+                    <p class="sub" data-es="Más de 15 personajes únicos esperan en el juego"
+                       data-en="More than 15 unique characters await in the game">Más de 15 personajes únicos esperan en el juego</p>
 
                     <!-- PROTAGONISTA -->
-                    <h5 style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 20px 0 12px; text-align:center;">PROTAGONISTA</h5>
+                    <h5 data-es="PROTAGONISTA" data-en="HERO"
+                        style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 20px 0 12px; text-align:center;">PROTAGONISTA</h5>
                     <div class="char-grid">
                         <div class="char">
                             <img src="assets/penguin_down_0.png" alt="Kentoo">
@@ -622,7 +637,7 @@
                     </div>
 
                     <!-- NPCS AMIGOS -->
-                    <h5 style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ALIADOS</h5>
+                    <h5 data-es="ALIADOS" data-en="ALLIES" style="color:var(--accent); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ALIADOS</h5>
                     <div class="char-grid">
                         <div class="char">
                             <img src="assets/npc_abuela.png" alt="Abuela">
@@ -667,7 +682,7 @@
                     </div>
 
                     <!-- ENEMIGOS -->
-                    <h5 style="color:#e88; font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ENEMIGOS</h5>
+                    <h5 data-es="ENEMIGOS" data-en="ENEMIES" style="color:#e88; font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">ENEMIGOS</h5>
                     <div class="char-grid">
                         <div class="char foe">
                             <img src="assets/caracara_0.png" alt="Caracara">
@@ -702,7 +717,7 @@
                     </div>
 
                     <!-- FAUNA Y FLORA -->
-                    <h5 style="color:var(--gold); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">FAUNA Y FLORA</h5>
+                    <h5 data-es="FAUNA Y FLORA" data-en="FAUNA & FLORA" style="color:var(--gold); font-size:0.85em; letter-spacing:3px; margin: 28px 0 12px; text-align:center;">FAUNA Y FLORA</h5>
                     <div class="char-grid">
                         <div class="char">
                             <img src="assets/sheep_0.png" alt="Oveja blanca">
@@ -733,32 +748,34 @@
                 </div>
             </div>
 
-            <!-- Proyecto 2: GENTO Photo Editor -->
+            <!-- Proyecto 2: Gentoo Photo Editor -->
             <div class="project-card">
                 <div class="project-grid">
                     <div class="project-info">
-                        <span class="badge photo">📸 Aplicación</span>
-                        <h3>GENTO Photo Editor</h3>
-                        <p>Editor de fotos minimalista y elegante. Filtros profesionales,
-                        ajustes finos, recortes precisos y herramientas creativas.
-                        Diseñado para quienes aman la fotografía móvil.</p>
+                        <span class="badge photo" data-es="📸 Aplicación" data-en="📸 App">📸 Aplicación</span>
+                        <h3>Gentoo Photo Editor</h3>
+                        <p data-es="Editor de fotos minimalista y elegante. Filtros profesionales, ajustes finos, recortes precisos y herramientas creativas. Diseñado para quienes aman la fotografía móvil."
+                           data-en="Minimalist and elegant photo editor. Professional filters, fine adjustments, precise crops, and creative tools. Designed for those who love mobile photography.">
+                            Editor de fotos minimalista y elegante. Filtros profesionales,
+                            ajustes finos, recortes precisos y herramientas creativas.
+                            Diseñado para quienes aman la fotografía móvil.</p>
 
                         <div class="tags">
-                            <span class="tag">🎨 Filtros</span>
-                            <span class="tag">⚙️ Ajustes</span>
-                            <span class="tag">✂️ Recorte</span>
-                            <span class="tag">📝 Texto</span>
-                            <span class="tag">💧 Marca de agua</span>
-                            <span class="tag">🪄 Borrador</span>
+                            <span class="tag" data-es="🎨 Filtros" data-en="🎨 Filters">🎨 Filtros</span>
+                            <span class="tag" data-es="⚙️ Ajustes" data-en="⚙️ Adjustments">⚙️ Ajustes</span>
+                            <span class="tag" data-es="✂️ Recorte" data-en="✂️ Crop">✂️ Recorte</span>
+                            <span class="tag" data-es="📝 Texto" data-en="📝 Text">📝 Texto</span>
+                            <span class="tag" data-es="💧 Marca de agua" data-en="💧 Watermark">💧 Marca de agua</span>
+                            <span class="tag" data-es="🪄 Borrador" data-en="🪄 Eraser">🪄 Borrador</span>
                         </div>
 
                         <div class="platforms">
-                            <div class="platform-badge">📱 iOS — En desarrollo</div>
+                            <div class="platform-badge" data-es="📱 iOS — En desarrollo" data-en="📱 iOS — In development">📱 iOS — En desarrollo</div>
                         </div>
                     </div>
 
                     <div class="photo-scene">
-                        <img src="assets/gento_photo_logo_luna.svg" alt="GENTO Photo Editor" style="max-width: 100%;">
+                        <img src="assets/gento_photo_logo_luna.svg" alt="Gentoo Photo Editor" style="max-width: 100%;">
                     </div>
                 </div>
             </div>
@@ -769,25 +786,28 @@
     <section id="news">
         <div class="container">
             <div class="section-header">
-                <p class="pretitle">Lo último</p>
-                <h2>Noticias y anuncios</h2>
-                <p>Mantente al día con nuestro progreso</p>
+                <p class="pretitle" data-es="Lo último" data-en="Latest">Lo último</p>
+                <h2 data-es="Noticias y anuncios" data-en="News & announcements">Noticias y anuncios</h2>
+                <p data-es="Mantente al día con nuestro progreso" data-en="Stay up to date with our progress">Mantente al día con nuestro progreso</p>
             </div>
             <div class="news-grid">
                 <div class="news-card">
                     <div class="date">2026 — Q1</div>
-                    <h4>🚀 Gentoo Adventure en pulido final</h4>
-                    <p>El juego está en sus últimos detalles. Audio, testing y App Store.</p>
+                    <h4 data-es="🚀 Gentoo Adventure en pulido final" data-en="🚀 Gentoo Adventure in final polish">🚀 Gentoo Adventure en pulido final</h4>
+                    <p data-es="El juego está en sus últimos detalles. Audio, testing y App Store."
+                       data-en="The game is in its final details. Audio, testing and App Store.">El juego está en sus últimos detalles. Audio, testing y App Store.</p>
                 </div>
                 <div class="news-card">
                     <div class="date">2026 — Q1</div>
-                    <h4>📸 GENTO Photo Editor anunciado</h4>
-                    <p>Nuestro segundo proyecto: editor de fotos minimalista en desarrollo.</p>
+                    <h4 data-es="📸 Gentoo Photo Editor anunciado" data-en="📸 Gentoo Photo Editor announced">📸 Gentoo Photo Editor anunciado</h4>
+                    <p data-es="Nuestro segundo proyecto: editor de fotos minimalista en desarrollo."
+                       data-en="Our second project: minimalist photo editor in development.">Nuestro segundo proyecto: editor de fotos minimalista en desarrollo.</p>
                 </div>
                 <div class="news-card">
                     <div class="date">2026</div>
-                    <h4>📱 Beta TestFlight próximamente</h4>
-                    <p>Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte.</p>
+                    <h4 data-es="📱 Beta TestFlight próximamente" data-en="📱 TestFlight beta coming soon">📱 Beta TestFlight próximamente</h4>
+                    <p data-es="Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte."
+                       data-en="We're opening closed beta on TestFlight. Follow us on Instagram to sign up.">Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte.</p>
                 </div>
             </div>
         </div>
@@ -824,14 +844,34 @@
             <a href="mailto:gentooadventure@gmail.com" class="social-link">📧 Email</a>
         </div>
         <div style="margin-top:20px;">
-            <a href="#projects">Proyectos</a>
-            <a href="#news">Noticias</a>
-            <a href="privacy.html">Privacidad</a>
+            <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+            <a href="#news" data-es="Noticias" data-en="News">Noticias</a>
+            <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
         </div>
-        <div class="copy">© 2026 Gentoo Adventure · Indie Games & Apps · Por Carlos Vásquez</div>
+        <div class="copy" data-es="© 2026 Gentoo Adventure · Indie Games & Apps · Por Carlos Vásquez"
+             data-en="© 2026 Gentoo Adventure · Indie Games & Apps · By Carlos Vásquez">© 2026 Gentoo Adventure · Indie Games & Apps · Por Carlos Vásquez</div>
     </footer>
 
     <script>
+        // ===== Toggle de idioma =====
+        let currentLang = localStorage.getItem('gentoo_lang') || 'es';
+        function applyLang(lang) {
+            document.querySelectorAll('[data-es][data-en]').forEach(el => {
+                el.textContent = el.dataset[lang];
+            });
+            document.documentElement.lang = lang;
+            const btn = document.getElementById('langBtn');
+            if (btn) btn.textContent = lang === 'es' ? '🌐 ES' : '🌐 EN';
+            currentLang = lang;
+            localStorage.setItem('gentoo_lang', lang);
+        }
+        function toggleLang() {
+            applyLang(currentLang === 'es' ? 'en' : 'es');
+        }
+        // Aplicar al cargar
+        document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
+        applyLang(currentLang);
+
         const audio = document.getElementById('bgMusic');
         const player = document.getElementById('musicPlayer');
         const navBtn = document.getElementById('musicBtn');
