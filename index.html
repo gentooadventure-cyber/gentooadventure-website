@@ -415,6 +415,78 @@
         }
         .photo-scene img { max-width: 100%; }
 
+        /* SCREENSHOTS GALLERY */
+        .screenshots-gallery {
+            margin-top: 50px;
+            margin-bottom: 60px;
+        }
+        .screenshots-gallery h4 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        .screenshots-gallery .sub {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .ss-item {
+            cursor: pointer;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.25s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .ss-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .ss-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(94,193,142,0.3);
+        }
+        .ss-item:hover img {
+            transform: scale(1.03);
+        }
+        /* Lightbox */
+        .lightbox {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: zoom-out;
+            padding: 20px;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(94,193,142,0.4);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white; font-size: 2em;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
         /* CHARACTERS GALLERY */
         .characters-gallery {
             margin-top: 50px;
@@ -615,6 +687,38 @@
 
                     <div class="game-preview">
                         <img src="assets/game_preview.png" alt="Gameplay de Gentoo Adventure" class="pixel">
+                    </div>
+                </div>
+
+                <!-- 📸 Galería de Screenshots -->
+                <div class="screenshots-gallery">
+                    <h4 data-es="📸 Capturas del juego"
+                        data-en="📸 Game screenshots">📸 Capturas del juego</h4>
+                    <p class="sub" data-es="Echa un vistazo a tu próxima aventura"
+                       data-en="Take a peek at your next adventure">Echa un vistazo a tu próxima aventura</p>
+
+                    <div class="screenshots-grid">
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_1.png')">
+                            <img src="assets/screenshots/screenshot_1.png" alt="Title screen" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_2.png')">
+                            <img src="assets/screenshots/screenshot_2.png" alt="Mini-boss fight" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_3.png')">
+                            <img src="assets/screenshots/screenshot_3.png" alt="Stanley Harbour" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_4.png')">
+                            <img src="assets/screenshots/screenshot_4.png" alt="Night cycle" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_5.png')">
+                            <img src="assets/screenshots/screenshot_5.png" alt="Sea Lion Cave" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_6.png')">
+                            <img src="assets/screenshots/screenshot_6.png" alt="Swimming" loading="lazy">
+                        </div>
+                        <div class="ss-item" onclick="openScreenshot('assets/screenshots/screenshot_7.png')">
+                            <img src="assets/screenshots/screenshot_7.png" alt="Sailing between islands" loading="lazy">
+                        </div>
                     </div>
                 </div>
 
@@ -838,6 +942,12 @@
     </div>
     <audio id="bgMusic" preload="none"></audio>
 
+    <!-- 📸 Lightbox para ver screenshots en grande -->
+    <div class="lightbox" id="lightbox" onclick="closeScreenshot()">
+        <span class="lightbox-close">✕</span>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
     <footer>
         <div class="footer-social">
             <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 Instagram</a>
@@ -871,6 +981,20 @@
         // Aplicar al cargar
         document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
         applyLang(currentLang);
+
+        // ===== Screenshots Lightbox =====
+        function openScreenshot(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeScreenshot() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeScreenshot();
+        });
 
         const audio = document.getElementById('bgMusic');
         const player = document.getElementById('musicPlayer');
