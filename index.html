@@ -202,6 +202,20 @@
             font-size: 0.85em;
             font-weight: 600;
         }
+        /* Badge activo = botón de descarga (App Store) */
+        a.platform-badge-live {
+            background: linear-gradient(135deg, #0a84ff, #0066cc);
+            border: 1px solid #4da6ff;
+            color: #fff;
+            text-decoration: none;
+            transition: transform .15s ease, box-shadow .15s ease;
+            box-shadow: 0 2px 10px rgba(10,132,255,.4);
+            display: inline-block;
+        }
+        a.platform-badge-live:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(10,132,255,.6);
+        }
 
         /* Project visual (game) */
         .sprite-scene {
@@ -680,7 +694,7 @@
                         </div>
 
                         <div class="platforms">
-                            <div class="platform-badge" data-es="📱 iOS — Próximamente" data-en="📱 iOS — Coming Soon">📱 iOS — Próximamente</div>
+                            <a class="platform-badge platform-badge-live" href="https://apps.apple.com/app/id6776083188" target="_blank" rel="noopener" data-es="📱 Descargar en App Store" data-en="📱 Download on App Store">📱 Descargar en App Store</a>
                             <div class="platform-badge" data-es="🤖 Android — Próximamente" data-en="🤖 Android — Coming Soon">🤖 Android — Próximamente</div>
                         </div>
                     </div>
@@ -896,10 +910,11 @@
             </div>
             <div class="news-grid">
                 <div class="news-card">
-                    <div class="date">2026 — Q1</div>
-                    <h4 data-es="🚀 Gentoo Adventure en pulido final" data-en="🚀 Gentoo Adventure in final polish">🚀 Gentoo Adventure en pulido final</h4>
-                    <p data-es="El juego está en sus últimos detalles. Audio, testing y App Store."
-                       data-en="The game is in its final details. Audio, testing and App Store.">El juego está en sus últimos detalles. Audio, testing y App Store.</p>
+                    <div class="date">2026 — Q2</div>
+                    <h4 data-es="🎉 ¡Gentoo Adventure ya está en el App Store!" data-en="🎉 Gentoo Adventure is now on the App Store!">🎉 ¡Gentoo Adventure ya está en el App Store!</h4>
+                    <p data-es="¡Ya puedes descargar el juego gratis en tu iPhone y iPad!"
+                       data-en="You can now download the game free on your iPhone and iPad!">¡Ya puedes descargar el juego gratis en tu iPhone y iPad!</p>
+                    <p><a href="https://apps.apple.com/app/id6776083188" target="_blank" rel="noopener" style="color:#4da6ff;font-weight:bold;" data-es="📱 Descargar ahora →" data-en="📱 Download now →">📱 Descargar ahora →</a></p>
                 </div>
                 <div class="news-card">
                     <div class="date">2026 — Q1</div>
@@ -909,9 +924,9 @@
                 </div>
                 <div class="news-card">
                     <div class="date">2026</div>
-                    <h4 data-es="📱 Beta TestFlight próximamente" data-en="📱 TestFlight beta coming soon">📱 Beta TestFlight próximamente</h4>
-                    <p data-es="Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte."
-                       data-en="We're opening closed beta on TestFlight. Follow us on Instagram to sign up.">Abrimos beta cerrada en TestFlight. Síguenos en Instagram para inscribirte.</p>
+                    <h4 data-es="🤖 Versión Android en camino" data-en="🤖 Android version coming">🤖 Versión Android en camino</h4>
+                    <p data-es="Estamos portando Gentoo Adventure a Android. Pronto en Google Play."
+                       data-en="We're porting Gentoo Adventure to Android. Coming soon to Google Play.">Estamos portando Gentoo Adventure a Android. Pronto en Google Play.</p>
                 </div>
             </div>
         </div>
