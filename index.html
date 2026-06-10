@@ -588,6 +588,26 @@
             margin-bottom: 9px; color: var(--text);
         }
         .ls-player audio { width: 100%; height: 36px; }
+        /* Letra desplegable */
+        .ls-lyrics { margin-top: 10px; }
+        .ls-lyrics summary {
+            cursor: pointer; list-style: none; color: var(--gold);
+            font-weight: 700; font-size: 0.82em; padding: 6px 0; user-select: none;
+        }
+        .ls-lyrics summary::-webkit-details-marker { display: none; }
+        .ls-lyrics summary::before { content: '📜 ▸ '; }
+        .ls-lyrics[open] summary::before { content: '📜 ▾ '; }
+        .ls-lyrics-body {
+            margin-top: 8px; max-height: 210px; overflow-y: auto;
+            font-size: 0.84em; color: var(--muted); line-height: 1.7;
+            border-top: 1px solid var(--border); padding-top: 10px;
+        }
+        .ls-lyrics-body p { margin: 0 0 2px; }
+        .ls-lyrics-body .ls-sec {
+            color: var(--accent); font-weight: 700; font-size: 0.82em;
+            text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px;
+        }
+        .ls-lyrics-body .ls-sec:first-child { margin-top: 0; }
         @media (max-width: 700px) { .ls-players { grid-template-columns: 1fr; } }
 
         /* FOOTER */
@@ -954,10 +974,58 @@
                         <div class="ls-player">
                             <span data-es="🇪🇸 Español" data-en="🇪🇸 Spanish">🇪🇸 Español</span>
                             <audio controls preload="none" src="assets/music/launch_es.mp3"></audio>
+                            <details class="ls-lyrics">
+                                <summary data-es="Ver letra" data-en="Show lyrics">Ver letra</summary>
+                                <div class="ls-lyrics-body">
+                                    <p class="ls-sec">Verso 1</p>
+                                    <p>Hay una isla en el sur del mundo donde el viento aprende a cantar.</p>
+                                    <p>Una mañana el cielo se nubló y algo oscuro despertó en el mar.</p>
+                                    <p class="ls-sec">Verso 2</p>
+                                    <p>Las criaturas se volvieron sombras, el silencio cayó sobre el lugar.</p>
+                                    <p>Una abuela puso en mis alas esperanza y valentía para andar.</p>
+                                    <p class="ls-sec">🎶 Coro</p>
+                                    <p>Y camino sin saber adónde, con el corazón en cada paso que doy.</p>
+                                    <p>Canto suave, cuento estrellas, busco el nido donde alguna vez estuve yo. 🌌</p>
+                                    <p class="ls-sec">Verso 3</p>
+                                    <p>Crucé cuevas de hielo y sombra, crucé bosques que olían a sal.</p>
+                                    <p>No era un héroe, era un pingüino con miedo, con frío, con amor.</p>
+                                    <p class="ls-sec">Verso 4</p>
+                                    <p>Cuando el ave más grande del cielo desató su tormenta final,</p>
+                                    <p>no fue la fuerza lo que me sostuvo, sino saber que tenía un hogar.</p>
+                                    <p class="ls-sec">🎶 Coro (se repite)</p>
+                                    <p class="ls-sec">Coda</p>
+                                    <p>Hoy regreso al nido de paja, hoy mi isla volvió a sonreír.</p>
+                                    <p>Ya no busco lo que me faltaba, soy ahora el mar, soy ahora aquí. 🌊🐧</p>
+                                </div>
+                            </details>
                         </div>
                         <div class="ls-player">
                             <span data-es="🇬🇧 Inglés" data-en="🇬🇧 English">🇬🇧 Inglés</span>
                             <audio controls preload="none" src="assets/music/launch_en.mp3"></audio>
+                            <details class="ls-lyrics">
+                                <summary data-es="Ver letra" data-en="Show lyrics">Ver letra</summary>
+                                <div class="ls-lyrics-body">
+                                    <p class="ls-sec">Verse 1</p>
+                                    <p>There's an island in the south of the world where the wind learns to sing.</p>
+                                    <p>One morning the sky clouded over and something dark awoke in the sea.</p>
+                                    <p class="ls-sec">Verse 2</p>
+                                    <p>The creatures turned into shadows, silence fell over the place.</p>
+                                    <p>A grandmother placed on my wings hope and courage to face what's ahead.</p>
+                                    <p class="ls-sec">🎶 Chorus</p>
+                                    <p>And I walk on, not knowing where, with my heart in every step I take.</p>
+                                    <p>I sing softly, I count stars, I search for the nest where I once was. 🌌</p>
+                                    <p class="ls-sec">Verse 3</p>
+                                    <p>I crossed caves of ice and shadow, I crossed forests that smelled of salt.</p>
+                                    <p>I wasn't a hero, I was a penguin with fear, with cold, with love.</p>
+                                    <p class="ls-sec">Verse 4</p>
+                                    <p>When the largest bird in the sky unleashed its final storm,</p>
+                                    <p>it wasn't strength that sustained me, it was knowing I had a home.</p>
+                                    <p class="ls-sec">🎶 Chorus (repeat)</p>
+                                    <p class="ls-sec">Coda</p>
+                                    <p>Today I return to the straw nest, today my island smiled again.</p>
+                                    <p>I no longer search for what I lacked, I am now the sea, I am now here. 🌊🐧</p>
+                                </div>
+                            </details>
                         </div>
                     </div>
                 </div>
