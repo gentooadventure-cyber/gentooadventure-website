@@ -559,6 +559,37 @@
         .news-card h4 { font-size: 1.1em; margin-bottom: 8px; }
         .news-card p { color: var(--muted); font-size: 0.92em; }
 
+        /* LAUNCH SONG (destacado) */
+        .launch-song {
+            display: flex; gap: 26px; align-items: center; flex-wrap: wrap;
+            background: linear-gradient(135deg, rgba(94,193,142,0.14), rgba(244,196,64,0.08));
+            border: 1px solid var(--accent);
+            border-radius: 18px; padding: 26px; margin-bottom: 30px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+        }
+        .ls-cover img {
+            width: 130px; height: 130px; border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        }
+        .ls-body { flex: 1; min-width: 270px; }
+        .ls-tag {
+            color: var(--gold); font-weight: 700; font-size: 0.78em;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;
+        }
+        .ls-body h3 { font-size: 1.45em; margin-bottom: 6px; }
+        .ls-body > p { color: var(--muted); font-size: 0.92em; margin-bottom: 16px; }
+        .ls-players { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .ls-player {
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 12px; padding: 12px;
+        }
+        .ls-player span {
+            display: block; font-weight: 700; font-size: 0.85em;
+            margin-bottom: 9px; color: var(--text);
+        }
+        .ls-player audio { width: 100%; height: 36px; }
+        @media (max-width: 700px) { .ls-players { grid-template-columns: 1fr; } }
+
         /* FOOTER */
         footer {
             padding: 50px 24px 30px;
@@ -695,7 +726,7 @@
 
                         <div class="platforms">
                             <a class="platform-badge platform-badge-live" href="https://apps.apple.com/app/id6776083188" target="_blank" rel="noopener" data-es="📱 Descargar en App Store" data-en="📱 Download on App Store">📱 Descargar en App Store</a>
-                            <div class="platform-badge" data-es="🤖 Android — Próximamente" data-en="🤖 Android — Coming Soon">🤖 Android — Próximamente</div>
+                            <div class="platform-badge" data-es="🤖 Android — 20 de julio" data-en="🤖 Android — July 20">🤖 Android — 20 de julio</div>
                         </div>
                     </div>
 
@@ -908,6 +939,30 @@
                 <h2 data-es="Noticias y anuncios" data-en="News & announcements">Noticias y anuncios</h2>
                 <p data-es="Mantente al día con nuestro progreso" data-en="Stay up to date with our progress">Mantente al día con nuestro progreso</p>
             </div>
+
+            <!-- 🎵 Canción de lanzamiento -->
+            <div class="launch-song">
+                <div class="ls-cover">
+                    <img src="icon.png" alt="Gentoo Adventure" class="pixel">
+                </div>
+                <div class="ls-body">
+                    <div class="ls-tag" data-es="🎵 Nuevo · Banda sonora" data-en="🎵 New · Soundtrack">🎵 Nuevo · Banda sonora</div>
+                    <h3 data-es="Canción de lanzamiento" data-en="Launch song">Canción de lanzamiento</h3>
+                    <p data-es="El tema oficial de Gentoo Adventure, disponible en español e inglés. ¡Dale play!"
+                       data-en="The official Gentoo Adventure theme, available in Spanish and English. Hit play!">El tema oficial de Gentoo Adventure, disponible en español e inglés. ¡Dale play!</p>
+                    <div class="ls-players">
+                        <div class="ls-player">
+                            <span data-es="🇪🇸 Español" data-en="🇪🇸 Spanish">🇪🇸 Español</span>
+                            <audio controls preload="none" src="assets/music/launch_es.mp3"></audio>
+                        </div>
+                        <div class="ls-player">
+                            <span data-es="🇬🇧 Inglés" data-en="🇬🇧 English">🇬🇧 Inglés</span>
+                            <audio controls preload="none" src="assets/music/launch_en.mp3"></audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="news-grid">
                 <div class="news-card">
                     <div class="date">2026 — Q2</div>
@@ -935,10 +990,10 @@
                        data-en="Our second project: minimalist photo editor in development.">Nuestro segundo proyecto: editor de fotos minimalista en desarrollo.</p>
                 </div>
                 <div class="news-card">
-                    <div class="date">2026</div>
-                    <h4 data-es="🤖 Versión Android en camino" data-en="🤖 Android version coming">🤖 Versión Android en camino</h4>
-                    <p data-es="Estamos portando Gentoo Adventure a Android. Pronto en Google Play."
-                       data-en="We're porting Gentoo Adventure to Android. Coming soon to Google Play.">Estamos portando Gentoo Adventure a Android. Pronto en Google Play.</p>
+                    <div class="date" data-es="20 de julio de 2026" data-en="July 20, 2026">20 de julio de 2026</div>
+                    <h4 data-es="🤖 Android llega el 20 de julio" data-en="🤖 Android arrives July 20">🤖 Android llega el 20 de julio</h4>
+                    <p data-es="¡Marca tu calendario! La versión Android de Gentoo Adventure llega a Google Play el 20 de julio de 2026."
+                       data-en="Mark your calendar! The Android version of Gentoo Adventure arrives on Google Play on July 20, 2026.">¡Marca tu calendario! La versión Android de Gentoo Adventure llega a Google Play el 20 de julio de 2026.</p>
                 </div>
             </div>
         </div>
@@ -957,6 +1012,8 @@
             <button onclick="playNext()" class="mp-btn">⏭</button>
         </div>
         <div class="mp-tracks">
+            <button class="mp-track" data-src="assets/music/launch_es.mp3" data-name="🎵 Lanzamiento (ES)">🎵 Lanz. ES</button>
+            <button class="mp-track" data-src="assets/music/launch_en.mp3" data-name="🎵 Launch (EN)">🎵 Launch EN</button>
             <button class="mp-track" data-src="assets/music/music_title.m4a" data-name="🎭 Título">Título</button>
             <button class="mp-track" data-src="assets/music/music_island.mp3" data-name="🏝️ Isla">Isla</button>
             <button class="mp-track" data-src="assets/music/music_forest.mp3" data-name="🌲 Bosque">Bosque</button>
