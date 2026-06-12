@@ -681,6 +681,31 @@
             .music-player { left: 12px; right: 12px; bottom: 12px; width: auto; }
             nav .links a { margin-left: 10px; font-size: 0.82em; }
         }
+        /* 🎬 Video destacado (YouTube) */
+        .video-feature {
+            background: linear-gradient(135deg, rgba(94,193,142,0.14), rgba(244,196,64,0.08));
+            border: 1px solid var(--accent);
+            border-radius: 18px; padding: 26px; margin-bottom: 30px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+        }
+        .video-feature h3 { font-size: 1.45em; margin-bottom: 6px; }
+        .video-feature > .vf-head > p { color: var(--muted); font-size: 0.92em; margin-bottom: 16px; }
+        .vf-embed {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+            background: #000;
+        }
+        .vf-embed iframe {
+            position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+        }
+        .vf-cta { text-align: center; margin-top: 16px; }
+        .vf-cta a {
+            display: inline-block; background: var(--gold); color: #1a1207;
+            font-weight: 700; padding: 11px 22px; border-radius: 999px;
+            text-decoration: none; transition: transform .15s ease, box-shadow .15s ease;
+        }
+        .vf-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244,196,64,0.35); }
     </style>
 </head>
 <body>
@@ -708,6 +733,7 @@
         </p>
         <div class="social-bar">
             <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 @gentooadventure</a>
+            <a href="https://www.youtube.com/@GentooAdventure" target="_blank" rel="noopener" class="social-link">▶ YouTube</a>
             <a href="mailto:gentooadventure@gmail.com" class="social-link"
                data-es="📧 Contacto" data-en="📧 Contact">📧 Contacto</a>
         </div>
@@ -1031,6 +1057,27 @@
                 </div>
             </div>
 
+            <!-- 🎬 Video destacado de YouTube -->
+            <div class="video-feature">
+                <div class="vf-head">
+                    <div class="ls-tag" data-es="🎬 Nuevo · Devlog" data-en="🎬 New · Devlog">🎬 Nuevo · Devlog</div>
+                    <h3 data-es="Probando Unity: el primer mundo 3D" data-en="Trying Unity: the first 3D world">Probando Unity: el primer mundo 3D</h3>
+                    <p data-es="Mira cómo doy mis primeros pasos llevando Gentoo Adventure a 3D. ¡El comienzo de un nuevo viaje! 🐧"
+                       data-en="Watch my first steps bringing Gentoo Adventure into 3D. The start of a new journey! 🐧">Mira cómo doy mis primeros pasos llevando Gentoo Adventure a 3D. ¡El comienzo de un nuevo viaje! 🐧</p>
+                </div>
+                <div class="vf-embed">
+                    <iframe src="https://www.youtube-nocookie.com/embed/q-mEbXnE_T0"
+                            title="Gentoo Adventure 3D — Devlog"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                </div>
+                <p class="vf-cta">
+                    <a href="https://youtu.be/q-mEbXnE_T0" target="_blank" rel="noopener"
+                       data-es="▶ Ver en YouTube y suscríbete" data-en="▶ Watch on YouTube &amp; subscribe">▶ Ver en YouTube y suscríbete</a>
+                </p>
+            </div>
+
             <div class="news-grid">
                 <div class="news-card">
                     <div class="date">2026 — Q2</div>
@@ -1103,6 +1150,7 @@
     <footer>
         <div class="footer-social">
             <a href="https://instagram.com/gentooadventure" target="_blank" class="social-link ig">📷 Instagram</a>
+            <a href="https://www.youtube.com/@GentooAdventure" target="_blank" rel="noopener" class="social-link">▶ YouTube</a>
             <a href="mailto:gentooadventure@gmail.com" class="social-link">📧 Email</a>
         </div>
         <div style="margin-top:20px;">
