@@ -812,6 +812,8 @@
                style="background:#06243a;color:#fff;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:700;white-space:nowrap;"
                data-es="⬇ Descargar (iOS)" data-en="⬇ Download (iOS)">⬇ Descargar (iOS)</a>
             <a href="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)"
+               data-mailto-es="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)"
+               data-mailto-en="mailto:gentooadventure@gmail.com?subject=I%20want%20to%20be%20a%20Gentoo%20Adventure%20tester%20(Android)"
                style="background:transparent;color:#06243a;border:1.5px solid #06243a;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:700;white-space:nowrap;"
                data-es="✉️ Ser tester (Android)" data-en="✉️ Be a tester (Android)">✉️ Ser tester (Android)</a>
         </span>
@@ -872,6 +874,8 @@
                data-es="📱 Mientras tanto, la versión para iPhone y iPad ya está disponible en la App Store y se actualiza constantemente con mejoras y contenido nuevo."
                data-en="📱 Meanwhile, the iPhone and iPad version is already available on the App Store and is constantly updated with improvements and new content.">📱 Mientras tanto, la versión para iPhone y iPad ya está disponible en la App Store y se actualiza constantemente con mejoras y contenido nuevo.</p>
             <a href="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)&amp;body=Hola!%20Quiero%20inscribirme%20como%20tester%20de%20la%20version%20Android.%20Este%20es%20el%20correo%20de%20mi%20cuenta%20de%20Google%20con%20el%20que%20probare%20el%20juego%3A%20"
+               data-mailto-es="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)&amp;body=Hola!%20Quiero%20inscribirme%20como%20tester%20de%20la%20version%20Android.%20Este%20es%20el%20correo%20de%20mi%20cuenta%20de%20Google%20con%20el%20que%20probare%20el%20juego%3A%20"
+               data-mailto-en="mailto:gentooadventure@gmail.com?subject=I%20want%20to%20be%20a%20Gentoo%20Adventure%20tester%20(Android)&amp;body=Hi!%20I%20would%20like%20to%20sign%20up%20as%20a%20tester%20for%20the%20Android%20version.%20Here%20is%20the%20email%20of%20the%20Google%20account%20I%20will%20use%20to%20test%20the%20game%3A%20"
                style="display:inline-block;background:var(--accent);color:#06243a;font-weight:700;padding:11px 20px;border-radius:10px;text-decoration:none;font-size:0.92em;"
                data-es="✉️ Quiero ser tester de Android"
                data-en="✉️ I want to be an Android tester">✉️ Quiero ser tester de Android</a>
@@ -1272,7 +1276,7 @@
                     <h4 data-es="🤖 Android: pequeño atraso (¡y puedes ser tester!)" data-en="🤖 Android: small delay (and you can be a tester!)">🤖 Android: pequeño atraso (¡y puedes ser tester!)</h4>
                     <p data-es="La versión Android tendrá un breve atraso mientras la pulimos en fase de pruebas para Google Play. ¿Quieres probarla antes que nadie? Escríbeme con el correo de tu cuenta de Google y te sumo a los testers."
                        data-en="The Android version will be slightly delayed while we polish it in the testing phase for Google Play. Want to try it before anyone else? Email me with your Google account address and I'll add you to the testers.">La versión Android tendrá un breve atraso mientras la pulimos en fase de pruebas para Google Play. ¿Quieres probarla antes que nadie? Escríbeme con el correo de tu cuenta de Google y te sumo a los testers.</p>
-                    <p><a href="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)" target="_blank" rel="noopener" style="color:#4da6ff;font-weight:bold;" data-es="✉️ Inscribirme como tester →" data-en="✉️ Sign me up as a tester →">✉️ Inscribirme como tester →</a></p>
+                    <p><a href="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)" data-mailto-es="mailto:gentooadventure@gmail.com?subject=Quiero%20ser%20tester%20de%20Gentoo%20Adventure%20(Android)" data-mailto-en="mailto:gentooadventure@gmail.com?subject=I%20want%20to%20be%20a%20Gentoo%20Adventure%20tester%20(Android)" style="color:#4da6ff;font-weight:bold;" data-es="✉️ Inscribirme como tester →" data-en="✉️ Sign me up as a tester →">✉️ Inscribirme como tester →</a></p>
                 </div>
             </div>
         </div>
@@ -1332,6 +1336,10 @@
         function applyLang(lang) {
             document.querySelectorAll('[data-es][data-en]').forEach(el => {
                 el.textContent = el.dataset[lang];
+            });
+            // Links mailto cuyo asunto/cuerpo cambia de idioma (ej. inscripción de testers)
+            document.querySelectorAll('[data-mailto-es][data-mailto-en]').forEach(el => {
+                el.setAttribute('href', lang === 'es' ? el.dataset.mailtoEs : el.dataset.mailtoEn);
             });
             document.documentElement.lang = lang;
             const btn = document.getElementById('langBtn');
