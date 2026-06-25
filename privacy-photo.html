@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Gentoo Photo Editor</title>
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --card: #ffffff;
+            --text: #1a2332;
+            --muted: #5b6b85;
+            --accent: #2e7d4f;
+            --border: #e2e8f0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1721;
+                --card: #1a2332;
+                --text: #e8eef7;
+                --muted: #94a3b8;
+                --accent: #5ec18e;
+                --border: #2a3548;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 56px;
+            margin-bottom: 12px;
+        }
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 2em;
+            font-weight: 800;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.95em;
+        }
+        .lang-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .lang-toggle button {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 0 4px;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+        .lang-toggle button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+        h2:not(:first-child) {
+            margin-top: 32px;
+        }
+        ul { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .summary {
+            background: linear-gradient(135deg, rgba(94,193,142,0.1), rgba(46,125,79,0.1));
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .summary strong { color: var(--accent); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+        .lang-section { display: none; }
+        .lang-section.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">📸🐧</div>
+            <h1>Gentoo Photo Editor</h1>
+            <div class="subtitle">Política de Privacidad · Privacy Policy</div>
+        </header>
+
+        <div class="lang-toggle">
+            <button id="btn-es" class="active" onclick="setLang('es')">🇪🇸 Español</button>
+            <button id="btn-en" onclick="setLang('en')">🇬🇧 English</button>
+        </div>
+
+        <!-- ESPAÑOL -->
+        <div id="lang-es" class="lang-section active">
+            <div class="card">
+                <div class="summary">
+                    <strong>Resumen:</strong> Gentoo Photo Editor no recopila, almacena ni comparte ningún dato personal.
+                    Tus fotos se editan <strong>dentro de tu dispositivo</strong> y nunca se suben a internet.
+                </div>
+
+                <h2>1. Información que recopilamos</h2>
+                <p><strong>Ninguna.</strong> La App no recopila, almacena ni transmite datos personales a nosotros
+                ni a terceros. No tenemos servidores que reciban tu información, no hay cuentas ni inicios de sesión,
+                y no usamos analítica ni publicidad.</p>
+
+                <h2>2. Tus fotos se procesan en tu dispositivo</h2>
+                <p>Todas las funciones —filtros, pinceles, recorte de fondo con IA, collages, stickers y exportación
+                a PDF— se ejecutan <strong>localmente en tu teléfono</strong>. Las imágenes que abres o editas
+                <strong>nunca se suben a internet</strong> ni se comparten automáticamente.</p>
+                <p>El recorte de fondo usa <strong>Google ML Kit (Selfie Segmentation)</strong>, que funciona
+                completamente <strong>sin conexión, dentro de tu dispositivo</strong>. Las imágenes no se envían
+                a Google ni a ningún servidor.</p>
+
+                <h2>3. Permisos del sistema</h2>
+                <p>La App solicita estos permisos solo para que puedas usar sus funciones:</p>
+                <ul>
+                    <li>📸 <strong>Fotos / Galería:</strong> para abrir las fotos que quieras editar y para guardar tus creaciones.</li>
+                    <li>📷 <strong>Cámara:</strong> para tomar una foto y editarla directamente.</li>
+                </ul>
+                <p>No accedemos a tus fotos en segundo plano ni sin tu acción.</p>
+
+                <h2>4. Almacenamiento</h2>
+                <p>Las fotos editadas y los stickers que guardes se almacenan <strong>en tu propio dispositivo</strong>,
+                bajo tu control. Puedes borrarlos cuando quieras. Nosotros no tenemos copia de ellos.</p>
+
+                <h2>5. Compartir</h2>
+                <p>Si decides compartir una imagen, se usa la función de compartir de tu sistema operativo (iOS/Android).
+                Tú eliges con qué app o persona compartir; nosotros no intervenimos en ese proceso.</p>
+
+                <h2>6. Tracking y publicidad</h2>
+                <p>No usamos identificadores publicitarios, no rastreamos tu actividad y no mostramos anuncios.
+                No utilizamos servicios de analítica de terceros.</p>
+
+                <h2>7. Niños y menores</h2>
+                <p>La App es apta para todo público y, al no recopilar datos, no recolecta información de menores.</p>
+
+                <h2>8. Cambios a esta política</h2>
+                <p>Si en el futuro agregamos funciones que cambien el manejo de datos (por ejemplo, publicidad o cuentas),
+                actualizaremos esta página y la fecha de abajo.</p>
+
+                <h2>9. Contacto</h2>
+                <p>Para cualquier consulta sobre privacidad, escríbenos a:
+                <a href="mailto:gentooadventure@gmail.com">gentooadventure@gmail.com</a></p>
+            </div>
+        </div>
+
+        <!-- ENGLISH -->
+        <div id="lang-en" class="lang-section">
+            <div class="card">
+                <div class="summary">
+                    <strong>Summary:</strong> Gentoo Photo Editor does not collect, store, or share any personal data.
+                    Your photos are edited <strong>on your device</strong> and never uploaded to the internet.
+                </div>
+
+                <h2>1. Information We Collect</h2>
+                <p><strong>None.</strong> The App does not collect, store, or transmit any personal data to us or to
+                third parties. We have no servers that receive your information, there are no accounts or logins,
+                and we do not use analytics or advertising.</p>
+
+                <h2>2. Your Photos Are Processed On Your Device</h2>
+                <p>All features —filters, brushes, AI background removal, collages, stickers, and PDF export— run
+                <strong>locally on your phone</strong>. The images you open or edit are <strong>never uploaded to
+                the internet</strong> or shared automatically.</p>
+                <p>Background removal uses <strong>Google ML Kit (Selfie Segmentation)</strong>, which runs entirely
+                <strong>offline, on your device</strong>. Images are not sent to Google or any server.</p>
+
+                <h2>3. System Permissions</h2>
+                <p>The App requests these permissions solely so you can use its features:</p>
+                <ul>
+                    <li>📸 <strong>Photos / Gallery:</strong> to open the photos you want to edit and to save your creations.</li>
+                    <li>📷 <strong>Camera:</strong> to take a photo and edit it directly.</li>
+                </ul>
+                <p>We do not access your photos in the background or without your action.</p>
+
+                <h2>4. Storage</h2>
+                <p>Edited photos and stickers you save are stored <strong>on your own device</strong>, under your control.
+                You can delete them anytime. We keep no copy of them.</p>
+
+                <h2>5. Sharing</h2>
+                <p>If you choose to share an image, your operating system's share feature (iOS/Android) is used.
+                You decide which app or person to share with; we do not take part in that process.</p>
+
+                <h2>6. Tracking and Advertising</h2>
+                <p>We do not use advertising identifiers, do not track your activity, and do not show ads.
+                We do not use third-party analytics services.</p>
+
+                <h2>7. Children and Minors</h2>
+                <p>The App is suitable for all audiences and, since we collect no data, we do not collect information
+                from minors.</p>
+
+                <h2>8. Changes to This Policy</h2>
+                <p>If we add features in the future that change how data is handled (for example, advertising or accounts),
+                we will update this page and the date below.</p>
+
+                <h2>9. Contact</h2>
+                <p>For any privacy-related inquiries, please write to:
+                <a href="mailto:gentooadventure@gmail.com">gentooadventure@gmail.com</a></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Última actualización · Last updated: 24 de junio de 2026 / June 24, 2026</p>
+            <p>© 2026 Carlos Vasquez · Gentoo Adventure Studio</p>
+        </footer>
+    </div>
+
+    <script>
+        // Idioma según navegador
+        if (navigator.language && navigator.language.startsWith('en')) {
+            setLang('en');
+        }
+        function setLang(lang) {
+            document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-toggle button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
